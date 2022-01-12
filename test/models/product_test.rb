@@ -37,8 +37,9 @@ class ProductTest < ActiveSupport::TestCase
 		product.price = -1
 		#shall be invalid
 		assert product.invalid?
-		# and throw this error
+		# and check if the error output matches...
 		assert_equal ["must be greater than or equal to 0.01"],
+			# the actual one
 			product.errors[:price]
 		
 		# set price to 0
@@ -75,5 +76,31 @@ class ProductTest < ActiveSupport::TestCase
 			assert new_product(image_url).invalid?,
 			"#{image_url} shouldn't be valid"
 		end
+	end
+
+	test "product title invalid length" do
+		product = Product.new(
+			description: products(:ruby).description,
+			image_url: products(:ruby).image_url,
+			price: products(:ruby).price
+		)
+
+		product.title = "aaa"
+		assert product.invalid?
+		assert_equal ["is too short (minimum is 10 characters)"],
+			product.errors[:title]
+
+		a = 0
+		
+		# create random title with 201 char length
+		product.title = (0...201).map { (65 + rand(26)).chr }.join;
+
+		assert product.invalid?
+		assert_equal ["is too long (maximum is 200 characters)"],
+			product.errors[:title]
+
+		product.title = "aaaaaaaaaaa"
+		assert product.valid?
+
 	end
 end
