@@ -1,0 +1,38 @@
+.store {
+  ul.catalog {
+    width: calc(100% - 48px);
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+
+    li {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      padding: 1em 2em;
+      border-bottom: solid thin #ddd;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      // This makes sure our <li> has enough height
+      // to hold the entire image, since it's floated
+
+      &::after {
+        clear: both;
+        content: " ";
+        display: block;
+      }
+
+      img {
+        float: left;
+        padding: 1em;
+        margin-right: 1em;
+        margin-bottom: 1em;
+        border-radius: 12px;
+      }
+
+      .price {
+        font-size: 1.414em;
+      }
+    }
+  }
+}
