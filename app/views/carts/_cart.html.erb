@@ -1,2 +1,23 @@
-<div id="<%= dom_id cart %>">
-</div>
+<article>
+  <h2>Your Cart</h2>
+  <table>
+    <%= render(cart.line_items) %>
+    <tfoot>
+      <tr>
+        <th colspan="2">Total: <%= number_to_currency(cart.total_price) %></th>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="disfl fldirrow flCenter">
+    <%=
+  
+    button_to 'Empty cart', cart,
+    { 
+      method: :delete,
+      data: { confirm: 'Are you sure?' },
+      class: 'hellofresh rd4 hover-shadow red big mt24'
+    }
+    
+  %>
+  </div>
+</article>

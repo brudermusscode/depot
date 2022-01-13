@@ -1,0 +1,224 @@
+@import "de.variables.scss";
+@import "de.classes.scss";
+
+.hellofresh {
+  display: block;
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: none;
+  transition: all 0.1s linear;
+  overflow: hidden;
+
+  // if the button has the attribute disabled
+  &[disabled] {
+    background: rgba(255, 255, 255, 0.28) !important;
+    color: var(--colour-dark) !important;
+  }
+
+  // if the button is not diabled
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  // hover and focus mode
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &.rounded {
+    @extend .rd12;
+  }
+
+  // ----------
+  // a totally round button (just with an icon ofc)
+  // ---------------
+  &.circled {
+    border-radius: 50%;
+
+    &.small {
+      height: 2em;
+      width: 2em;
+    }
+  }
+
+  &.icon-only {
+    width: 3em;
+    height: 3em;
+    padding: 0;
+    text-align: center;
+
+    i {
+      line-height: 1.8em;
+    }
+  }
+
+  // ----------
+  // light or dark modes of the buttons
+  // ---------------
+  &.light {
+    color: var(--colour-dark);
+  }
+
+  &.dark {
+    color: var(--colour-light);
+  }
+
+  // ----------
+  // shadow behaviour
+  // ---------------
+  &.shadowed {
+    @extend .mshd-1;
+  }
+
+  &.shadowed,
+  &.hover-shadow {
+    &:hover {
+      @extend .mshd-2;
+    }
+
+    &:active {
+      @extend .mshd-1;
+    }
+  }
+
+  &.text-shadowed {
+    text-shadow: 0 1px 1.6px rgba(0, 0, 0, 0.42);
+  }
+
+  &.text-shadowed-blured {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.24);
+  }
+
+  // ----------
+  // sizes
+  // ---------------
+  &.big {
+    padding: 0 24px;
+    line-height: 3em;
+  }
+
+  &.small {
+    padding: 0 12px;
+    line-height: 1.4em;
+    font-size: 1em;
+  }
+
+  &.wholebottom {
+    position: relative;
+    line-height: 2.8em;
+    text-align: center;
+    font-size: 1em;
+    width: 100%;
+    text-shadow: 0 2px 1px rgba(100, 108, 114, 0.42);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0);
+      transition: all 0.1s linear;
+    }
+
+    &:hover {
+      &::before {
+        background-color: rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    &:active {
+      &::before {
+        background-color: rgba(0, 0, 0, 0.24);
+      }
+    }
+  }
+
+  //
+
+  &.light {
+    background-color: var(--colour-light);
+    color: var(--colour-dark);
+  }
+
+  &.green {
+    background-color: var(--colour-green);
+    color: white;
+  }
+
+  &.pink {
+    background-color: var(--colour-pink);
+    color: white;
+  }
+
+  &.red {
+    background-color: var(--colour-red);
+    color: white;
+  }
+
+  &.darkred {
+    background-color: var(--colour-darkred);
+    color: white;
+  }
+
+  &.blue {
+    background-color: var(--colour-blue);
+    color: white;
+  }
+
+  &.lila {
+    background-color: var(--colour-lila);
+    color: white;
+  }
+
+  &.grey {
+    background-color: var(--colour-grey);
+    color: white;
+  }
+
+  &.orange {
+    background-color: var(--colour-orange);
+    color: white;
+  }
+}
+
+.notifier {
+  bottom: -28em;
+  right: 1em;
+  border-radius: 4px;
+  background: #161616f3;
+  position: fixed;
+  z-index: 100;
+  animation: notifierSlideIn 0.4s cubic-bezier(0.1, 0.82, 0.25, 1) forwards;
+
+  .inr {
+    padding: 0 32px;
+    line-height: 4em;
+
+    p {
+      color: white;
+    }
+  }
+
+  @extend .mshd-2;
+}
+
+@keyframes notifierSlideIn {
+  from {
+    bottom: -28em;
+  }
+
+  to {
+    bottom: 1em;
+  }
+}
