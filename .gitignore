@@ -35,3 +35,6 @@
 /config/master.key
 
 token
+
+# dirs
+/app/assets/icons/material-design-icons

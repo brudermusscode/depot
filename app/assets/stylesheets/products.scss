@@ -1,62 +1,74 @@
 @import "de.classes.scss";
 
 .products {
-  margin: 0;
-  padding: 0.5em;
+  ul.all {
+    width: calc(100% - 1px);
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
 
-  a {
-    padding: 0.354em 0.5em;
-    border-radius: 0.354em;
-  }
+    li.a {
+      position: relative;
+      background: white;
+      padding: 1em 2em;
+      border-bottom: solid thin rgba(0, 0, 0, 0.12);
 
-  table {
-    border-collapse: collapse;
-  }
+      &::after {
+        clear: both;
+        content: " ";
+        display: block;
+      }
 
-  td {
-    padding: 0.5em;
-    margin: 0;
-  }
-
-  tr.list_line_odd {
-    background-color: #effeef;
-  }
-
-  td.image {
-    // Hide this on mobile devices
-    display: none;
-
-    // Assume anything bigger than 30em
-    // is a non-mobile device and can
-    // fit the image.
-    @media (min-width: 30em) {
-      display: block;
       img {
-        height: 11.3em;
+        float: left;
+        margin-right: 1em;
+        border-radius: 4px;
       }
-    }
-  }
 
-  td.description {
-    h1 {
-      font-size: 1.4em;
-    }
-  }
+      .price {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 1em;
+        width: calc(100% - 2em);
+        background: orange;
+        padding: 12px;
+        box-sizing: border-box;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 1) 59%,
+          rgba(255, 255, 255, 0) 100%
+        );
 
-  td.actions {
-    ul {
-      padding: 0;
-      list-style: none;
+        .actual {
+          font-size: 1.8em;
+          font-weight: 700;
+        }
 
-      li {
-        padding: 0.5em 0.5em;
+        ul {
+          list-style: none;
+
+          a {
+            display: block;
+            margin-right: 12px;
+
+            &:last-of-type {
+              margin: 0;
+            }
+
+            li {
+              background: transparent;
+              line-height: 1;
+              padding: 4px 24px;
+            }
+          }
+
+          @extend .disfl, .fldirrow;
+        }
       }
-    }
-  }
-
-  tfoot {
-    td {
-      padding: 0.5em 0;
     }
   }
 }
