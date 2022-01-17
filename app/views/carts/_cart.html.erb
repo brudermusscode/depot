@@ -8,16 +8,15 @@
       </tr>
     </tfoot>
   </table>
-  <div class="disfl fldirrow flCenter">
+  <div class="disfl fldirrow flCenter" style="gap:1em;margin-top:2em;">
     <%=
-  
-        button_to 'Empty cart', cart,
-        { 
-          method: :delete,
-          data: { confirm: 'Are you sure?' },
-          class: 'hellofresh rd4 hover-shadow red big mt24'
-        }
-        
-      %>
+      button_to 'empty', cart,
+      { 
+        method: :delete,
+        data: { confirm: 'Are you sure?' },
+        class: 'hellofresh rd4 hover-shadow red small mt24 mr12',
+        remote: true
+      }
+    %>
   </div>
 </article>

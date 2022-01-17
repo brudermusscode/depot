@@ -39,20 +39,22 @@
         </div>
       </div>
     <% end %>
-    <nav class="side_nav">
-      <% if @cart %>
-        <div id="cart" class="carts">
-          <%= render_if @cart && @cart.line_items.any?, @cart %>
+    <flex-layout>
+      <nav class="side_nav">
+        <% if @cart %>
+          <div id="cart" class="carts">
+            <%= render_if @cart && @cart.line_items.any?, @cart %>
+          </div>
+        <% end %>
+        <div style="display:none;background:var(--colour-grey);color:#fff;font-weight:600;text-align:center;padding:24px 0;">
+          <%= "#{Time.now.hour}" + ":" + "#{Time.now.min}" %>
         </div>
-      <% end %>
-      <div style="color:white;font-weight:600;text-align:center;padding:24px 0;">
-        <%= "#{Time.now.hour}" + ":" + "#{Time.now.min}" %>
+      </nav>
+      <div class="content">
+        <main class='<%= controller.controller_name %>'>
+          <%= yield %>
+        </main>
       </div>
-    </nav>
-    <div class="content">
-      <main class='<%= controller.controller_name %>'>
-        <%= yield %>
-      </main>
-    </div>
+    </flex-layout>
   </body>
 </html>

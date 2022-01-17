@@ -11,8 +11,9 @@
     li {
       position: relative;
       background: white;
-      padding: 1em 2em;
-      border-bottom: solid thin rgba(0, 0, 0, 0.12);
+      padding: 2em 2.8em;
+
+      @extend .rd12, .mb24;
 
       &::after {
         clear: both;
@@ -29,9 +30,9 @@
       .price {
         display: block;
         position: absolute;
-        bottom: 0;
-        right: 1em;
-        width: calc(100% - 2em);
+        bottom: 1.2em;
+        right: 2em;
+        width: calc(100% - 4em);
         background: orange;
         padding: 12px;
         box-sizing: border-box;
@@ -42,6 +43,7 @@
           rgba(255, 255, 255, 1) 59%,
           rgba(255, 255, 255, 0) 100%
         );
+        border-radius: 0 0 24px 24px;
 
         .actual {
           font-size: 1.8em;

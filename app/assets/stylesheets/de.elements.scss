@@ -29,8 +29,8 @@
     text-decoration: none;
   }
 
-  &:active {
-    transform: scale(0.9);
+  &:focus {
+    outline: 4px solid var(--colour-blue-200);
   }
 
   &.rounded {
