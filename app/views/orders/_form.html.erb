@@ -24,15 +24,7 @@
     <div class="mb12"></div>
     <%= form.email_field :email, size: 40 %>
   </div>
-  <div class="field">
-    <%= form.label :pay_type %>
-    <div class="mb12"></div>
-    <%= 
-      form.select :pay_type, 
-      Order.pay_types.keys,
-      prompt: 'Select a payment method'
-    %>
-  </div>
+  <div id='pay-type-component'></div>
   <div class="actions">
     <%= form.submit 'Place Order' %>
   </div>

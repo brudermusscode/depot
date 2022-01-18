@@ -5,6 +5,7 @@ ruby '3.1.0'
 
 gem 'sass-rails'
 gem 'webpacker'
+gem 'prettier'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.1'
