@@ -1,1 +1,6 @@
 <%= render @cart %>
+<div class="disfl fldirrow" style="gap:1em;margin-top:24px;">
+<%= link_to "Back", carts_path, class: 'hellofresh small red rd6 hover-shadow' %>
+<%= link_to "Edit this cart", edit_cart_path(@cart), class: 'hellofresh small red rd6 hover-shadow' %>
+<%= button_to "Destroy this cart", @cart, method: :delete, class: 'hellofresh small red rd6 hover-shadow' %>
+</div>

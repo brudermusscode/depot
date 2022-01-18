@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Justin Seidel
-  address: MyText
+  name: David Kareen
+  address: Murrican Boulevard 7
   email: justinleonseidel@protonmail.com
   pay_type: Check
 
 two:
-  name: MyString
-  address: MyText
-  email: MyString
-  pay_type: 1
+  name: Justin Seidel
+  address: Markt 5
+  email: justinleonseidel@gmail.com
+  pay_type: Check

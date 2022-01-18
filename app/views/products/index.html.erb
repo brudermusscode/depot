@@ -12,25 +12,25 @@
             </div>
             <div class="rt">
               <ul>
-                <%= 
-                  link_to "Show", 
-                  product, 
-                  { 
-                    class: "hellofresh small red rd4 hover-shadow" 
+                <%=
+                  link_to "Show",
+                  product,
+                  {
+                    class: "hellofresh small red rd4 hover-shadow"
                   }
                 %>
                 <%= link_to edit_product_path(product) do %>
                   <li>Edit</li>
                 <% end %>
                 <%=
-                  button_to "Delete", 
-                  product, 
-                  { 
-                    method: :delete, 
-                    data: { 
-                      confirm: 'Are you sure?' 
+                  button_to "Delete",
+                  product,
+                  {
+                    method: :delete,
+                    data: {
+                      confirm: 'Are you sure?'
                     },
-                    class: "hellofresh rd4 small red hover-shadow" 
+                    class: "hellofresh rd4 small red hover-shadow"
                   }
                 %>
               </ul>
@@ -42,3 +42,5 @@
     <% end %>
   <% end %>
 </ul>
+
+<%= link_to "New product", new_product_path %>
