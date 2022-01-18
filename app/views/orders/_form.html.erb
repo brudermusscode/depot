@@ -1,0 +1,39 @@
+<%= form_with(model: order, local: true, class: 'depot_form', data: { turbo: false }) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error-explainer">
+      <div class="title"><%= pluralize(order.errors.count, "oopsies") %> 🌺:</div>
+      <ul class="list">
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :name %>
+    <div class="mb12"></div>
+    <%= form.text_field :name, size: 40 %>
+  </div>
+  <div class="field">
+    <%= form.label :address %>
+    <div class="mb12"></div>
+    <%= form.text_area :address, rows: 3, cols: 40 %>
+  </div>
+  <div class="field">
+    <%= form.label :email %>
+    <div class="mb12"></div>
+    <%= form.email_field :email, size: 40 %>
+  </div>
+  <div class="field">
+    <%= form.label :pay_type %>
+    <div class="mb12"></div>
+    <%= 
+      form.select :pay_type, 
+      Order.pay_types.keys,
+      prompt: 'Select a payment method'
+    %>
+  </div>
+  <div class="actions">
+    <%= form.submit 'Place Order' %>
+  </div>
+<% end %>
