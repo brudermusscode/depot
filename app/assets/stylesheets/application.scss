@@ -124,6 +124,17 @@ a {
   color: var(--colour-red);
 }
 
+.locale select {
+  padding: 14px 18px;
+  margin-right: 12px;
+  background: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  @extend .rd12;
+}
+
 .depot_form {
   padding: 0 1em;
   h1 {

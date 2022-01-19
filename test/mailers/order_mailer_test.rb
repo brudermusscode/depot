@@ -17,5 +17,4 @@ class OrderMailerTest < ActionMailer::TestCase
     assert_match /<td[^>]*>1<\/td>\s*<td>Programming Ruby 1.9<\/td>/,
     mail.body.encoded
   end
-
 end

@@ -1,3 +1,9 @@
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<script type="text/javascript">
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+</script>
+<%= javascript_pack_tag 'locale_switcher', 'data-turbolinks-track': 'reload' %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,16 +24,39 @@
             <a href="/">
               <li><span class="material-icons md-24">storefront</span></li>
             </a>
+            <%= link_to products_path do %>
+              <li><span class="material-icons md-24">inventory_2</span></li>
+            <% end %>
           </ul>
         </div>
         <div class="rt-cont">
           <ul class="menu">
-            <a href="/products">
-              <li><span class="material-icons md-24">inventory_2</span></li>
-            </a>
-            <a href="/">
-              <li><span class="material-icons md-24">shopping_bag</span></li>
-            </a>
+            <li>
+              <aside>
+              <%= form_tag store_index_path, class: 'locale' do %>
+                <%=
+                  select_tag 'set_locale',
+                  options_for_select(LANGUAGES, I18n.locale.to_s),
+                  onchange: 'this.form.submit()'
+                %>
+                <%= submit_tag 'submit', id: "submit_locale_change", class: "disn" %>
+              <% end %>
+              </aside>
+            </li>
+            <% if session[:user_id] %>
+              <%= link_to orders_path do %>
+                <li><span class="material-icons md-24">fact_check</span></li>
+              <% end %>
+              <%= link_to users_path do %>
+                <li><span class="material-icons md-24">face</span></li>
+              <% end %>
+              <%= link_to carts_path do %>
+                <li><span class="material-icons md-24">shopping_bag</span></li>
+              <% end %>
+              <%= link_to logout_path, { method: :delete } do %>
+                <li><span class="material-icons md-24">logout</span></li>
+              <% end %>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -46,9 +75,6 @@
             <%= render_if @cart && @cart.line_items.any?, @cart %>
           </div>
         <% end %>
-        <div style="display:none;background:var(--colour-grey);color:#fff;font-weight:600;text-align:center;padding:24px 0;">
-          <%= "#{Time.now.hour}" + ":" + "#{Time.now.min}" %>
-        </div>
       </nav>
       <div class="content">
         <main class='<%= controller.controller_name %>'>
