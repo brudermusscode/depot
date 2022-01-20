@@ -1,22 +1,32 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Title:</strong>
-    <%= product.title %>
-  </p>
+<style>
+  .product-outer {
+    background: var(--colour-light);
+    padding:24px;
+  }
 
-  <p>
-    <strong>Description:</strong>
-    <%= product.description %>
-  </p>
+  .title {
+    font-weight:700;
+    margin-bottom:12px;
+  }
 
-  <p>
-    <strong>Image url:</strong>
-    <%= product.image_url %>
-  </p>
+  .price {
+    margin-top:24px;
+  }
 
-  <p>
-    <strong>Price:</strong>
-    <%= product.price %>
-  </p>
-
+  .price p {
+    text-align:right;
+    background:var(--colour-dark);
+    padding:4px 12px;
+    border-radius:24px;
+    float:right;
+    color:white;
+  }
+</style>
+<div class="product-outer mshd-1 rd6" id="<%= dom_id product %>">
+  <p class="title"><%= product.title %></p>
+  <p class="description"><%= sanitize product.description %></p>
+  <div class="price">
+    <p><%= number_to_currency product.price %></p>
+  </div>
+  <div class="cl"></div>
 </div>

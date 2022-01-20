@@ -1,28 +1,40 @@
-<ul class="all">
+<div class="tools disfl mb24" style="flex-direction:row-reverse;">
+  <%= link_to "New product", new_product_path, class: 'hellofresh big blue hover-shadow rd6' %>
+</div>
+<ul class="catalog">
   <% cache @products do %>
     <% @products.each do |product| %>
       <% cache product do %>
-        <li class="a">
-          <%= image_tag(product.image_url) %>
-          <div class="title"><%= product.title %></div>
-          <%= sanitize(product.description) %>
-          <div class="price mt24">
-            <div class="lt actual">
-              <%= number_to_currency(product.price, locale: :de) %>
-            </div>
-            <div class="rt">
-              <ul>
-                <%=
-                  link_to "Show",
-                  product,
-                  {
-                    class: "hellofresh small red rd4 hover-shadow"
-                  }
-                %>
-                <%= link_to edit_product_path(product) do %>
-                  <li>Edit</li>
-                <% end %>
-                <%=
+        <li>
+          <div class="lt">
+            <%= image_tag(product.image_url) %>
+          </div>
+          <div class="inr rt">
+            <div class="title"><%= product.title %></div>
+            <div class="desc"><%= sanitize(product.description) %></div>
+            <div class="price mt24">
+              <div class="lt actual">
+                <%= number_to_currency(product.price) %>
+              </div>
+              <div class="rt">
+                <ul style="list-style:none;gap:.4em;" class="disfl fldirrow">
+                  <%=
+                    link_to "Show",
+                    product,
+                    {
+                      class: "hellofresh small red rd4 hover-shadow",
+                      style: 'background:rgba(255,255,255,.42);color:#333;'
+                    }
+                  %>
+                  <%=
+                    link_to 'Edit', edit_product_path(product),
+                    {
+                      class: "hellofresh rd4 small red hover-shadow",
+                      style: 'background:rgba(255,255,255,.42);color:#333;'
+                    }
+
+                    %>
+                  <%=
                   button_to "Delete",
                   product,
                   {
@@ -30,17 +42,18 @@
                     data: {
                       confirm: 'Are you sure?'
                     },
-                    class: "hellofresh rd4 small red hover-shadow"
+                    class: "hellofresh rd4 small red hover-shadow",
+                    style: 'background:rgba(255,255,255,.42);color:#333;'
                   }
                 %>
-              </ul>
+                </ul>
+              </div>
+              <div class="cl"></div>
             </div>
-            <div class="cl"></div>
           </div>
+          <div class="cl"></div>
         </li>
       <% end %>
     <% end %>
   <% end %>
 </ul>
-
-<%= link_to "New product", new_product_path %>

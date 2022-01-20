@@ -17,50 +17,6 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header class="main">
-      <div class="inr">
-        <div class="lt-cont">
-          <ul class="menu">
-            <a href="/">
-              <li><span class="material-icons md-24">storefront</span></li>
-            </a>
-            <%= link_to products_path do %>
-              <li><span class="material-icons md-24">inventory_2</span></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="rt-cont">
-          <ul class="menu">
-            <li>
-              <aside>
-              <%= form_tag store_index_path, class: 'locale' do %>
-                <%=
-                  select_tag 'set_locale',
-                  options_for_select(LANGUAGES, I18n.locale.to_s),
-                  onchange: 'this.form.submit()'
-                %>
-                <%= submit_tag 'submit', id: "submit_locale_change", class: "disn" %>
-              <% end %>
-              </aside>
-            </li>
-            <% if session[:user_id] %>
-              <%= link_to orders_path do %>
-                <li><span class="material-icons md-24">fact_check</span></li>
-              <% end %>
-              <%= link_to users_path do %>
-                <li><span class="material-icons md-24">face</span></li>
-              <% end %>
-              <%= link_to carts_path do %>
-                <li><span class="material-icons md-24">shopping_bag</span></li>
-              <% end %>
-              <%= link_to logout_path, { method: :delete } do %>
-                <li><span class="material-icons md-24">logout</span></li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </header>
     <% if notice %>
       <div id="notifier" class="notifier">
         <div class="inr">
@@ -68,11 +24,60 @@
         </div>
       </div>
     <% end %>
+    <header class="main">
+      <div class="inr">
+        <div class="lt-cont">
+          <ul class="menu">
+            <a href="/">
+              <li>Store</li>
+            </a>
+            <%= link_to products_path do %>
+              <li>Products</li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="rt-cont">
+          <ul class="menu">
+            <li>
+              <aside>
+                <%= form_tag store_index_path, class: 'locale' do %>
+                  <%=
+                  select_tag 'set_locale',
+                  options_for_select(LANGUAGES, I18n.locale.to_s),
+                  onchange: 'this.form.submit()'
+                %>
+                  <%= submit_tag 'submit', id: "submit_locale_change", style: "display:none;" %>
+                <% end %>
+              </aside>
+            </li>
+            <% if session[:user_id] %>
+              <%= link_to orders_path do %>
+                <li>Orders</li>
+              <% end %>
+              <%= link_to users_path do %>
+                <li>Profile</li>
+              <% end %>
+              <%= link_to carts_path do %>
+                <li><span style="font-size:24px;">🛍️</span></li>
+              <% end %>
+              <%= link_to logout_path, { method: :delete } do %>
+                <li><span style="font-size:24px;">➡️</span></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </header>
     <flex-layout>
       <nav class="side_nav">
         <% if @cart %>
           <div id="cart" class="carts">
             <%= render_if @cart && @cart.line_items.any?, @cart %>
+          </div>
+        <% end %>
+        <% if @product && @product.id.present? %>
+          <div class="product">
+            <%= image_tag @product.image_url, style: 'width:92%;border-radius:6px;border:1px solid rgba(0,0,0,.12);', class: '' %>
           </div>
         <% end %>
       </nav>

@@ -1,23 +1,31 @@
 <article>
-  <h2><%= t('.title') %></h2>
-  <table>
-    <%= render(cart.line_items) %>
-    <tfoot>
-      <tr>
-        <th colspan="2">Total: <%= number_to_currency(cart.total_price) %></th>
-      </tr>
-    </tfoot>
-  </table>
-  <div class="disfl fldirrow flCenter" style="gap:1em;margin-top:2em;">
-    <%=
-      button_to t('.empty'), cart,
-      {
-        method: :delete,
-        data: { confirm: 'Are you sure?' },
-        class: 'hellofresh rd4 hover-shadow red small mt24 mr12',
-        remote: true
-      }
-    %>
-    <%= button_to t('.checkout'), new_order_path, method: :get, class: "hellofresh rd4 hover-shadow green small mt24 mr12" %>
+  <div class="cart-title">
+    <%= t('.title') %>
+    <div class="title-bottom"></div>
   </div>
+  <div class="table">
+    <table>
+      <%= render(cart.line_items) %>
+      <tfoot>
+        <tr>
+          <th colspan="2">Total:</th>
+          <th colspan="1"><%= number_to_currency(cart.total_price) %></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <% unless @order or @carts %>
+    <div class="" style="margin-bottom:-1.6em;margin-top:1.4em;">
+      <%=
+        button_to t('.empty'), cart,
+        {
+          method: :delete,
+          data: { confirm: 'Are you sure?' },
+          class: 'hellofresh rd4 hover-shadow red small mt24 mr12',
+          remote: true
+        }
+      %>
+      <%= button_to t('.checkout'), new_order_path, method: :get, class: "hellofresh wholebottom mt24 mr12", style: 'border-radius:0 0 6px 6px;background:#37474F;color:white;border-top:1px solid rgba(0,0,0,.18);' %>
+    </div>
+  <% end %>
 </article>

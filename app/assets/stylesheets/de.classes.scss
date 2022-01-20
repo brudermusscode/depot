@@ -131,8 +131,8 @@
 
 /* SHADOWS */
 .mshd-1 {
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
-    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
+    0 2px 8px hsla(0, 0%, 0%, 0.05);
 }
 .mshd-2 {
   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
@@ -412,4 +412,23 @@ $border-radius-classes: 0;
 
 .text-shadow {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.niceColorGradient {
+  background: hsla(179, 52%, 51%, 1);
+  background: linear-gradient(
+    270deg,
+    hsla(179, 52%, 51%, 1) 0%,
+    hsla(301, 40%, 49%, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(179, 52%, 51%, 1) 0%,
+    hsla(301, 40%, 49%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    270deg,
+    hsla(179, 52%, 51%, 1) 0%,
+    hsla(301, 40%, 49%, 1) 100%
+  );
 }

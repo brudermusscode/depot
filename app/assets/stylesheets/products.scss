@@ -1,18 +1,20 @@
 @import "de.classes.scss";
 
 .products {
-  ul.all {
+  ul.catalog {
     width: calc(100% - 1px);
     list-style: none;
     padding: 0;
     margin: 0 auto;
     box-sizing: border-box;
 
-    li.a {
+    li {
       position: relative;
-      background: white;
-      padding: 1em 2em;
-      border-bottom: solid thin rgba(0, 0, 0, 0.12);
+      background: transparent;
+      padding: 0;
+      background: var(--colour-light);
+
+      @extend .rd6, .mb8, .mshd-1;
 
       &::after {
         clear: both;
@@ -21,54 +23,51 @@
       }
 
       img {
-        float: left;
-        margin-right: 1em;
-        border-radius: 4px;
+        width: 140px;
+        margin: 24px 0 24px 24px;
+
+        @extend .mshd-1, .rd6;
       }
 
-      .price {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        right: 1em;
-        width: calc(100% - 2em);
-        background: orange;
-        padding: 12px;
+      .inr {
+        padding: 24px 32px;
+        width: calc(100% - 180px);
         box-sizing: border-box;
-        background: rgb(255, 255, 255);
-        background: linear-gradient(
-          0deg,
-          rgba(255, 255, 255, 1) 0%,
-          rgba(255, 255, 255, 1) 59%,
-          rgba(255, 255, 255, 0) 100%
-        );
 
-        .actual {
-          font-size: 1.8em;
+        .title {
+          display: block;
+          font-size: 1em;
           font-weight: 700;
+          margin-bottom: 12px;
+          color: #333;
         }
 
-        ul {
-          list-style: none;
+        .desc {
+          font-family: "Outfit", sans-serif;
+          color: #333;
+          font-size: 1em;
+          font-weight: thin;
+        }
 
-          a {
-            display: block;
-            margin-right: 12px;
+        .price {
+          display: block;
+          box-sizing: border-box;
 
-            &:last-of-type {
-              margin: 0;
-            }
+          .actual {
+            background: var(--colour-dark);
+            padding: 4px 12px;
+            font-size: 1em;
+            color: #fff;
 
-            li {
-              background: transparent;
-              line-height: 1;
-              padding: 4px 24px;
-            }
+            @extend .rd24;
           }
-
-          @extend .disfl, .fldirrow;
         }
       }
+    }
+
+    form,
+    div {
+      display: inline;
     }
   }
 }

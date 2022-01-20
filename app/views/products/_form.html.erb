@@ -2,7 +2,6 @@
   <% if product.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
       <ul>
         <% product.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,28 +9,24 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
-
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, style: 'height:10em;' %>
   </div>
-
   <div>
     <%= form.label :image_url, style: "display: block" %>
     <%= form.text_field :image_url %>
   </div>
-
   <div>
     <%= form.label :price, style: "display: block" %>
     <%= form.text_field :price %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="mt24">
+    <%= form.submit 'Update', class: 'hellofresh big rt green rd6 hover-shadow' %>
+    <div class="cl"></div>
   </div>
 <% end %>

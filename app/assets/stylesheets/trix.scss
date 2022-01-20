@@ -1,0 +1,621 @@
+$icon-attach: svgo-data-uri("app/assets/images/attach.svg");
+$icon-bold: svgo-data-uri("images/bold.svg");
+$icon-bullets: svgo-data-uri("images/bullets.svg");
+$icon-code: svgo-data-uri("images/code.svg");
+$icon-heading-1: svgo-data-uri("images/heading_1.svg");
+$icon-italic: svgo-data-uri("images/italic.svg");
+$icon-link: svgo-data-uri("images/link.svg");
+$icon-nesting-level-decrease: svgo-data-uri(
+  "images/nesting_level_decrease.svg"
+);
+$icon-nesting-level-increase: svgo-data-uri(
+  "images/nesting_level_increase.svg"
+);
+$icon-numbers: svgo-data-uri("images/numbers.svg");
+$icon-quote: svgo-data-uri("images/quote.svg");
+$icon-redo: svgo-data-uri("images/redo.svg");
+$icon-remove: svgo-data-uri("images/remove.svg");
+$icon-strike: svgo-data-uri("images/strike.svg");
+$icon-undo: svgo-data-uri("images/undo.svg");
+
+$phone-width: 768px;
+
+$quote-border-width: 0.3em;
+$quote-margin-start: 0.3em;
+$quote-padding-start: 0.6em;
+
+$font-size-normal: 0.75em;
+$opacity-normal: 0.6;
+$opacity-disabled: 0.125;
+$opacity-active: 1;
+
+.trix-content .attachment-gallery > action-text-attachment,
+.trix-content .attachment-gallery > .attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 33%;
+}
+
+.trix-content
+  .attachment-gallery.attachment-gallery--2
+  > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--2 > .attachment,
+.trix-content
+  .attachment-gallery.attachment-gallery--4
+  > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.trix-content action-text-attachment .attachment {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+trix-editor {
+  [data-trix-mutable],
+  [data-trix-cursor-target] {
+    @extend %invisible-selection;
+  }
+
+  [data-trix-mutable] {
+    * {
+      @extend %invisible-selection;
+    }
+
+    &:not(.attachment__caption-editor) {
+      @extend %disable-selection;
+    }
+
+    &.attachment__caption-editor:focus {
+      @extend %visible-selection;
+    }
+
+    &.attachment {
+      &.attachment--file {
+        box-shadow: 0 0 0 2px highlight;
+        border-color: transparent;
+      }
+
+      img {
+        box-shadow: 0 0 0 2px highlight;
+      }
+    }
+  }
+
+  .attachment {
+    position: relative;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  .attachment--preview {
+    .attachment__caption:hover {
+      cursor: text;
+    }
+  }
+
+  .attachment__progress {
+    position: absolute;
+    z-index: 1;
+    height: 20px;
+    top: calc(50% - 10px);
+    left: 5%;
+    width: 90%;
+    opacity: 0.9;
+    transition: opacity 200ms ease-in;
+
+    &[value="100"] {
+      opacity: 0;
+    }
+  }
+
+  .attachment__caption-editor {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-align: center;
+    vertical-align: top;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .attachment__toolbar {
+    position: absolute;
+    z-index: 1;
+    top: -0.9em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .trix-button-group {
+    display: inline-flex;
+  }
+
+  .trix-button {
+    position: relative;
+    float: left; // Collapse whitespace between elements
+    color: #666;
+    white-space: nowrap;
+    font-size: 80%;
+    padding: 0 0.8em;
+    margin: 0;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+
+    &:not(:first-child) {
+      border-left: 1px solid #ccc;
+    }
+
+    &.trix-active {
+      background: #cbeefa;
+    }
+
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+  }
+
+  .trix-button--remove {
+    text-indent: -9999px;
+    display: inline-block;
+    padding: 0;
+    outline: none;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8em;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid highlight;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
+
+    &::before {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0.7;
+      content: "";
+      background-image: $icon-remove;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 90%;
+    }
+
+    &:hover {
+      border-color: #333;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  .attachment__metadata-container {
+    position: relative;
+  }
+
+  .attachment__metadata {
+    position: absolute;
+    left: 50%;
+    top: 2em;
+    transform: translate(-50%, 0);
+    max-width: 90%;
+    padding: 0.1em 0.6em;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 3px;
+
+    .attachment__name {
+      display: inline-block;
+      max-width: 100%;
+      vertical-align: bottom;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .attachment__size {
+      margin-left: 0.2em;
+      white-space: nowrap;
+    }
+  }
+}
+
+.trix-content {
+  line-height: 1.5;
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 1.2em;
+    line-height: 1.2;
+  }
+
+  blockquote {
+    border: 0 solid #ccc;
+    border-left-width: $quote-border-width;
+    margin-left: $quote-margin-start;
+    padding-left: $quote-padding-start;
+  }
+
+  [dir="rtl"] blockquote,
+  blockquote[dir="rtl"] {
+    border-width: 0;
+    border-right-width: $quote-border-width;
+    margin-right: $quote-margin-start;
+    padding-right: $quote-padding-start;
+  }
+
+  li {
+    margin-left: 1em;
+  }
+
+  [dir="rtl"] li {
+    margin-right: 1em;
+  }
+
+  pre {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    font-family: monospace;
+    font-size: 0.9em;
+    padding: 0.5em;
+    white-space: pre;
+    background-color: #eee;
+    overflow-x: auto;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .attachment {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover,
+      &:visited:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  .attachment__caption {
+    text-align: center;
+
+    .attachment__name + .attachment__size {
+      &::before {
+        content: " \2022 ";
+      }
+    }
+  }
+
+  .attachment--preview {
+    width: 100%;
+    text-align: center;
+
+    .attachment__caption {
+      color: #666;
+      font-size: 0.9em;
+      line-height: 1.2;
+    }
+  }
+
+  .attachment--file {
+    color: #333;
+    line-height: 1;
+    margin: 0 2px 2px 2px;
+    padding: 0.4em 1em;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+  }
+
+  .attachment-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+
+    .attachment {
+      flex: 1 0 33%;
+      padding: 0 0.5em;
+      max-width: 33%;
+    }
+
+    &.attachment-gallery--2,
+    &.attachment-gallery--4 {
+      .attachment {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+    }
+  }
+}
+
+trix-editor {
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0.4em 0.6em;
+  min-height: 5em;
+  outline: none;
+}
+
+@mixin phone {
+  @media (max-device-width: #{$phone-width}) {
+    @content;
+  }
+}
+
+%disable-selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%invisible-selection {
+  &::-moz-selection {
+    background: none;
+  }
+  &::selection {
+    background: none;
+  }
+}
+
+%visible-selection {
+  &::-moz-selection {
+    background: highlight;
+  }
+  &::selection {
+    background: highlight;
+  }
+}
+
+trix-toolbar {
+  * {
+    box-sizing: border-box;
+  }
+
+  .trix-button-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-x: auto;
+  }
+
+  .trix-button-group {
+    display: flex;
+    margin-bottom: 10px;
+    border: 1px solid #bbb;
+    border-top-color: #ccc;
+    border-bottom-color: #888;
+    border-radius: 3px;
+
+    &:not(:first-child) {
+      margin-left: 1.5vw;
+
+      @include phone {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .trix-button-group-spacer {
+    flex-grow: 1;
+
+    @include phone {
+      display: none;
+    }
+  }
+
+  .trix-button {
+    position: relative;
+    float: left; // Collapse whitespace between elements
+    color: rgba(0, 0, 0, $opacity-normal);
+    font-size: $font-size-normal;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 0 0.5em;
+    margin: 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    background: transparent;
+
+    &:not(:first-child) {
+      border-left: 1px solid #ccc;
+    }
+
+    &.trix-active {
+      background: #cbeefa;
+      color: rgba(0, 0, 0, $opacity-active);
+    }
+
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+
+    &:disabled {
+      color: rgba(0, 0, 0, $opacity-disabled);
+    }
+
+    @include phone {
+      letter-spacing: -0.01em;
+      padding: 0 0.3em;
+    }
+  }
+
+  .trix-button--icon {
+    font-size: inherit;
+    width: 2.6em;
+    height: 1.6em;
+    max-width: calc(0.8em + 4vw);
+    text-indent: -9999px;
+
+    @include phone {
+      height: 2em;
+      max-width: calc(0.8em + 3.5vw);
+    }
+
+    &::before {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: $opacity-normal;
+      content: "";
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      @include phone {
+        right: 6%;
+        left: 6%;
+      }
+    }
+
+    &.trix-active::before {
+      opacity: $opacity-active;
+    }
+
+    &:disabled::before {
+      opacity: $opacity-disabled;
+    }
+  }
+
+  .trix-button--icon-attach::before {
+    background-image: $icon-attach;
+    top: 8%;
+    bottom: 4%;
+  }
+  .trix-button--icon-bold::before {
+    background-image: $icon-bold;
+  }
+  .trix-button--icon-italic::before {
+    background-image: $icon-italic;
+  }
+  .trix-button--icon-link::before {
+    background-image: $icon-link;
+  }
+  .trix-button--icon-strike::before {
+    background-image: $icon-strike;
+  }
+  .trix-button--icon-quote::before {
+    background-image: $icon-quote;
+  }
+  .trix-button--icon-heading-1::before {
+    background-image: $icon-heading-1;
+  }
+  .trix-button--icon-code::before {
+    background-image: $icon-code;
+  }
+  .trix-button--icon-bullet-list::before {
+    background-image: $icon-bullets;
+  }
+  .trix-button--icon-number-list::before {
+    background-image: $icon-numbers;
+  }
+  .trix-button--icon-undo::before {
+    background-image: $icon-undo;
+  }
+  .trix-button--icon-redo::before {
+    background-image: $icon-redo;
+  }
+  .trix-button--icon-decrease-nesting-level::before {
+    background-image: $icon-nesting-level-decrease;
+  }
+  .trix-button--icon-increase-nesting-level::before {
+    background-image: $icon-nesting-level-increase;
+  }
+
+  .trix-dialogs {
+    position: relative;
+  }
+
+  .trix-dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: $font-size-normal;
+    padding: 15px 10px;
+    background: #fff;
+    box-shadow: 0 0.3em 1em #ccc;
+    border-top: 2px solid #888;
+    border-radius: 5px;
+    z-index: 5;
+  }
+
+  .trix-input--dialog {
+    font-size: inherit;
+    font-weight: normal;
+    padding: 0.5em 0.8em;
+    margin: 0 10px 0 0;
+    border-radius: 3px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    box-shadow: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &.validate:invalid {
+      box-shadow: #f00 0px 0px 1.5px 1px;
+    }
+  }
+
+  .trix-button--dialog {
+    font-size: inherit;
+    padding: 0.5em;
+    border-bottom: none;
+  }
+
+  .trix-dialog--link {
+    max-width: 600px;
+  }
+
+  .trix-dialog__link-fields {
+    display: flex;
+    align-items: baseline;
+
+    .trix-input {
+      flex: 1;
+    }
+
+    .trix-button-group {
+      flex: 0 0 content;
+      margin: 0;
+    }
+  }
+}
