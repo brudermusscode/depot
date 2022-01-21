@@ -1,0 +1,25 @@
+<article>
+  <div class="cart-title">
+    <p>Statistics</p>
+  </div>
+  <p style="margin:12px 24px 8px;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.06);">
+    🐝 <strong><%= @products.count %></strong> products overall
+  </p>
+  <p style="margin:12px 24px 0px;">
+    <%
+      overallPrice = 0
+      @products.each do |product|
+        overallPrice += product.price
+      end
+    %>
+    <strong><%= number_to_currency overallPrice %></strong> for all products
+  </p>
+  <div class="cart-title mt24" style='border-top:1px solid rgba(0,0,0,.06);'>
+    <p>Add new</p>
+  </div>
+  <p class="disfl fldirrow flCenter mt24">
+    <%= link_to new_product_path, class: 'hellofresh circled icon-only blue hover-shadow rd6' do %>
+      <i class="material-icons md-24">add</i>
+    <% end %>
+  </p>
+</article>

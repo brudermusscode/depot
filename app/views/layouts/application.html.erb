@@ -74,11 +74,21 @@
           <div id="cart" class="carts">
             <%= render_if @cart && @cart.line_items.any?, @cart %>
           </div>
-        <% end %>
-        <% if @product && @product.id.present? %>
+        <% elsif @product && @product.id.present? %>
           <div class="product">
-            <%= image_tag @product.image_url, style: 'width:92%;border-radius:6px;border:1px solid rgba(0,0,0,.12);', class: '' %>
+            <%= image_tag @product.image_url, style: 'width:92%;border-radius:6px;border:1px solid rgba(0,0,0,.12);' %>
           </div>
+        <% elsif @products %>
+          <div class="carts">
+            <%= render 'products/sidebar'  %>
+          </div>
+        <% elsif params[:controller] == "carts" %>
+          <div class="carts">
+            <%= render 'carts/sidebar'  %>
+          </div>
+        <% elsif @users %>
+          <div class="carts">
+            <%= render 'users/sidebar' %></div>
         <% end %>
       </nav>
       <div class="content">

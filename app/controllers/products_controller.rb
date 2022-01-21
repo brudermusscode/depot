@@ -38,8 +38,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.html do
-          redirect_to @product,
-                      notice: 'Product was successfully updated.'
+          redirect_to @product, notice: 'Product was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @product }
 

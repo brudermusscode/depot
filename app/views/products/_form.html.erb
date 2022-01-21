@@ -1,4 +1,4 @@
-<%= form_with(model: product) do |form| %>
+<%= form_with(model: product, local: true) do |form| %>
   <% if product.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -26,7 +26,7 @@
     <%= form.text_field :price %>
   </div>
   <div class="mt24">
-    <%= form.submit 'Update', class: 'hellofresh big rt green rd6 hover-shadow' %>
+    <%= form.submit 'Submit', method: :create, class: 'hellofresh big rt green rd6 hover-shadow' %>
     <div class="cl"></div>
   </div>
 <% end %>

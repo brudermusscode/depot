@@ -12,9 +12,10 @@
       position: relative;
       background: transparent;
       padding: 0;
-      background: var(--colour-light);
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.12);
 
-      @extend .rd6, .mb8, .mshd-1;
+      @extend .rd6, .mb8;
 
       &::after {
         clear: both;

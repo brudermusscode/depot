@@ -1,4 +1,18 @@
-<article>
+<%
+elClass = 'none'
+if params[:controller] == "carts"
+  elClass = "simple"
+end
+%>
+<style>
+  article.simple {
+    background:white;
+    border-radius:6px;
+    border:1px solid rgba(0,0,0,.12);
+    box-shadow:none;
+  }
+</style>
+<article class="<%= elClass %>">
   <div class="cart-title">
     <%= t('.title') %>
     <div class="title-bottom"></div>

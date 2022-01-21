@@ -9,9 +9,11 @@ class Cart < ApplicationRecord
       # just increase quantity
       # like 'UPDATE line_items SET quantity += 1 WHERE product_id = product.id
       current_item.quantity += 1
+      # increase product price, since we are having more than one item now
+      current_item.price += product.price
     else
       # Like 'INSERT INTO line_items (product_id) VALUES (product.id)'
-      current_item = line_items.build product_id: product.id
+      current_item = line_items.build product_id: product.id, price: product.price
     end
 
     # return the value of current_item

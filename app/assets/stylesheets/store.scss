@@ -10,7 +10,8 @@
 
     li {
       position: relative;
-      padding: 0;
+      padding: 24px 0;
+      border: 1px solid rgba(0, 0, 0, 0.12);
       margin-bottom: 18px;
       background: hsla(0, 0%, 100%, 1);
       background: linear-gradient(
@@ -41,18 +42,15 @@
       }
 
       img {
-        position: absolute;
+        width: 160px;
         margin: 0 0 0 24px;
-        border: 1px solid rgba(0, 0, 0, 0.12);
-        height: calc(100% - 4px);
-        z-index: -1;
 
-        @extend .rd6;
+        @extend .rd6, .mshd-1;
       }
 
       .inr {
-        padding: 0 32px 0 42px;
-        width: calc(100% - 180px);
+        width: calc(100% - 220px);
+        padding: 0 24px 0 0;
         box-sizing: border-box;
 
         .title {

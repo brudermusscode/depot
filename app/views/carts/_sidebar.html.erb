@@ -1,0 +1,19 @@
+<article>
+  <div class="cart-title">
+    <p>Statistics</p>
+  </div>
+  <p style="margin:12px 24px 8px;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.06);">
+    🎴 <strong><%= @carts.count %></strong> cart(s) overall
+  </p>
+  <p style="margin:12px 24px 0px;">
+    <%
+      overallPrice = 0
+      @carts.each do |cart|
+        cart.line_items.each do |line_item|
+          overallPrice += line_item.price
+        end
+      end
+    %>
+    <strong><%= number_to_currency overallPrice %></strong> overall costs
+  </p>
+</article>
