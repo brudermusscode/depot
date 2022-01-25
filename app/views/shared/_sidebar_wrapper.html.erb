@@ -1,0 +1,16 @@
+      <nav class="side_nav">
+  <% if @cart %>
+    <div id="cart" class="carts">
+      <%= render_if @cart && @cart.line_items.any?, @cart %>
+    </div>
+  <% elsif @product && @product.id.present? %>
+    <div class="product">
+      <%= image_tag @product.image_url, style: 'width:92%;border-radius:6px;border:1px solid rgba(0,0,0,.12);' %>
+    </div>
+  <% elsif params[:id].nil? && params[:action] != 'new' %>
+    <div class="carts">
+      <% dynamic_path = "#{params[:controller]}/sidebar" %>
+      <%= render_if_exists "#{dynamic_path}" %>
+    </div>
+  <% end %>
+</nav>

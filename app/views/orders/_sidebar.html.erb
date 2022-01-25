@@ -3,6 +3,6 @@
     <p>Statistics</p>
   </div>
   <p style="margin:12px 24px 8px;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.06);">
-    📦 <strong><%= @orders.count %></strong> orders(s) overall
+    📦 <strong><%= pluralize @orders.count, 'order' %></strong> overall
   </p>
 </article>

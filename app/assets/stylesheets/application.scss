@@ -133,6 +133,7 @@ select.norm,
 textarea {
   border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 12px 24px;
+  box-sizing: border-box;
   background: white;
   outline: none;
   width: 100%;
@@ -206,7 +207,6 @@ label {
 header.main {
   text-align: center; // center on mobile
   background: rgba(255, 255, 255, 0.92);
-  line-height: var(--hdr-height);
   height: var(--hdr-height);
   top: 0;
   left: 0;
@@ -310,7 +310,7 @@ nav {
 }
 
 .content {
-  width: 80%;
+  width: 72%;
 
   &.full {
     width: 100%;

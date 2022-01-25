@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
   resources :products do
     get :who_bought, on: :member
+    resources :reviews
   end
 
   resources :support_requests, only: %i[index update]

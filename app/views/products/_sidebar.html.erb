@@ -3,7 +3,7 @@
     <p>Statistics</p>
   </div>
   <p style="margin:12px 24px 8px;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.06);">
-    🐝 <strong><%= @products.count %></strong> products overall
+    🐝 <strong><%= pluralize @products.count, 'product' %></strong> overall
   </p>
   <p style="margin:12px 24px 0px;">
     <%

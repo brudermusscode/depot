@@ -1,5 +1,16 @@
-<tr>
+<style>
+  .delete:hover {
+    opacity:.4;
+    background:rgba(0,0,0,.12);
+  }
+</style>
+<tr style="position:relative;">
   <td class="quantity"><%= line_item.quantity %></td>
   <td><%= line_item.product.title %></td>
   <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+  <td>
+    <%= button_to line_item, method: :delete, class: 'hellofresh circled icon-only align-mid-vert delete', style: 'height:2em;width:2em;position:absolute;background:transparent;right:-1em;' do %>
+      <i style="line-height:1.4em;" class="material-icons md-24">close</i>
+    <% end %>
+  </td>
 </tr>

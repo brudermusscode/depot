@@ -1,6 +1,8 @@
 @import "de.classes.scss";
 
 .carts {
+  width: 100%;
+
   article {
     box-sizing: border-box;
     padding: 0 0 24px;
@@ -31,6 +33,7 @@
   .table {
     padding: 12px 24px 24px;
     padding-bottom: 0px;
+    box-sizing: border-box;
   }
 
   table {
@@ -90,12 +93,6 @@
 
     th.price {
       border-top: solid thin;
-    }
-  }
-
-  form {
-    &:first-of-type {
-      display: none;
     }
   }
 }

@@ -1,2 +1,15 @@
 <%= render "toolbar", product: @product %>
 <%= render @product %>
+<!-- review/comment section -->
+<%= render @product.reviews %>
+<div class="carts mt24">
+  <article style="padding:1em 1.2em">
+    <%= form_with(model: [@product, @product.reviews.build]) do |f| %>
+      <div class="mb12">
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body %>
+      </div>
+      <%= f.submit 'Submit', class: 'hellofresh blue big dark' %>
+    <% end %>
+  </article>
+</div>

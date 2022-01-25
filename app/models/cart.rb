@@ -20,6 +20,18 @@ class Cart < ApplicationRecord
     current_item
   end
 
+  def remove_product(line_item)
+    current_item = line_items.find_by id: line_item.id
+    current_item_amount = current_item.quantitiy
+
+    if current_item.quantity > 1
+      current_item.quantity -= 1
+      current_item.price = (current_item.price / current_item_amount) * current_item.quantity
+    else
+      current.item.destroy
+    end
+  end
+
   def total_price
     line_items.to_a.sum(&:total_price)
   end

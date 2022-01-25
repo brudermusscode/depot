@@ -24,7 +24,7 @@ end
       <tfoot>
         <tr>
           <th colspan="2">Total:</th>
-          <th colspan="1"><%= number_to_currency(cart.total_price) %></th>
+          <th colspan="2"><%= number_to_currency(cart.total_price) %></th>
         </tr>
       </tfoot>
     </table>
@@ -37,6 +37,7 @@ end
           method: :delete,
           data: { confirm: 'Are you sure?' },
           class: 'hellofresh hover-shadow red small mt24 mr12',
+          style: 'display:none;',
           remote: true
         }
       %>

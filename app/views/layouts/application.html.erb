@@ -1,13 +1,7 @@
-<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-<script type="text/javascript">
-  I18n.defaultLocale = "<%= I18n.default_locale %>";
-  I18n.locale = "<%= I18n.locale %>";
-</script>
-<%= javascript_pack_tag 'locale_switcher', 'data-turbolinks-track': 'reload' %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Depot</title>
+    <title><%= page_title + " - " + controller_name.capitalize %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -18,6 +12,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <%= javascript_importmap_tags %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
+    <%= javascript_pack_tag 'locale_switcher', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <% if notice %>
@@ -31,85 +31,9 @@
         </div>
       </div>
     <% end %>
-    <header class="main">
-      <div class="inr">
-        <div class="lt-cont">
-          <ul class="menu">
-            <a href="/">
-              <li>Store</li>
-            </a>
-            <%= link_to products_path do %>
-              <li>Products</li>
-            <% end %>
-            <%= link_to admin_path do %>
-              <li>Admin</li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="rt-cont">
-          <ul class="menu">
-            <li>
-              <aside>
-                <%= form_tag store_index_path, class: 'locale' do %>
-                  <%=
-                  select_tag 'set_locale',
-                  options_for_select(LANGUAGES, I18n.locale.to_s),
-                  onchange: 'this.form.submit()'
-                %>
-                  <%= submit_tag 'submit', id: "submit_locale_change", style: "display:none;" %>
-                <% end %>
-              </aside>
-            </li>
-            <% if session[:user_id] && User.find_by(id: session[:user_id]) %>
-              <%= link_to orders_path, class: 'icon-only' do %>
-                <li><span style="font-size:24px;">📦</span></li>
-              <% end %>
-              <%= link_to users_path, class: 'icon-only' do %>
-                <li><span style="font-size:24px;">🧙🏻</span></li>
-              <% end %>
-              <%= link_to carts_path, class: 'icon-only' do %>
-                <li><span style="font-size:24px;">🛍️</span></li>
-              <% end %>
-              <%= link_to logout_path, { method: :delete, class: 'icon-only active' } do %>
-                <li><span style="font-size:24px;">➡️</span></li>
-              <% end %>
-            <% else %>
-              <%= link_to login_path do %>
-                <li>Login</li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <%= render 'shared/header' %>
     <flex-layout>
-      <nav class="side_nav">
-        <% if @cart %>
-          <div id="cart" class="carts">
-            <%= render_if @cart && @cart.line_items.any?, @cart %>
-          </div>
-        <% elsif @product && @product.id.present? %>
-          <div class="product">
-            <%= image_tag @product.image_url, style: 'width:92%;border-radius:6px;border:1px solid rgba(0,0,0,.12);' %>
-          </div>
-        <% elsif @products %>
-          <div class="carts">
-            <%= render 'products/sidebar'  %>
-          </div>
-        <% elsif params[:controller] == "carts" %>
-          <div class="carts">
-            <%= render 'carts/sidebar'  %>
-          </div>
-        <% elsif @users %>
-          <div class="carts">
-            <%= render 'users/sidebar' %>
-          </div>
-        <% elsif @orders %>
-          <div class="carts">
-            <%= render 'orders/sidebar' %>
-          </div>
-        <% end %>
-      </nav>
+      <%= render 'shared/sidebar_wrapper' %>
       <div class="content">
         <main class='<%= controller.controller_name %>'>
           <%= yield %>
