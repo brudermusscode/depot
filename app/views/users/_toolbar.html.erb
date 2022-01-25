@@ -1,14 +1,14 @@
 <div class="lt">
-  <%= link_to "/#{controller_name}", { class: 'hellofresh clean icon-only clean circled hover-shadow rd6 ml4',
+  <%= link_to users_path, { class: 'hellofresh clean icon-only clean circled hover-shadow rd6 ml4',
   style: '' } do %>
     <span class="material-icons md24" style="line-height:2em;">arrow_back</span>
   <% end %>
 </div>
 <div class="rt disfl mb24" style="flex-direction:row-reverse;gap:.4em;">
   <% if params[:action] != 'new' %>
-    <%= button_to "Delete", @product, { method: :delete, class: 'hellofresh red big hover-shadow rd6' } %>
+    <%= button_to "Delete #{@user.name}", @user, { method: :delete, class: 'hellofresh red big hover-shadow rd6' } %>
     <% if params[:id] && params[:action] != 'edit' %>
-      <%= link_to "Edit", edit_product_path, class: 'hellofresh white big hover-shadow rd6 light', style: 'display:block;' %>
+      <%= link_to "Edit", edit_user_path, class: 'hellofresh white big hover-shadow rd6 light', style: 'display:block;' %>
     <% end %>
   <% end %>
 </div>

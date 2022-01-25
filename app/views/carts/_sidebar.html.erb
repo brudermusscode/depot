@@ -10,7 +10,7 @@
       overallPrice = 0
       @carts.each do |cart|
         cart.line_items.each do |line_item|
-          overallPrice += line_item.price
+          overallPrice += line_item.total_price
         end
       end
     %>

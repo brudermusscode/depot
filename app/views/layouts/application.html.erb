@@ -14,13 +14,20 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <%= javascript_importmap_tags %>
   </head>
   <body>
     <% if notice %>
       <div id="notifier" class="notifier">
         <div class="inr">
-          <p><%= notice %></p>
+          <div class="controller">
+            <p><i class="<%= controller_name %> material-icons md-24"></i></p>
+            <p><%= controller_name.capitalize %></p>
+          </div>
+          <div class="message"><%= notice %></div>
         </div>
       </div>
     <% end %>
@@ -33,6 +40,9 @@
             </a>
             <%= link_to products_path do %>
               <li>Products</li>
+            <% end %>
+            <%= link_to admin_path do %>
+              <li>Admin</li>
             <% end %>
           </ul>
         </div>
@@ -50,18 +60,22 @@
                 <% end %>
               </aside>
             </li>
-            <% if session[:user_id] %>
-              <%= link_to orders_path do %>
-                <li>Orders</li>
+            <% if session[:user_id] && User.find_by(id: session[:user_id]) %>
+              <%= link_to orders_path, class: 'icon-only' do %>
+                <li><span style="font-size:24px;">📦</span></li>
               <% end %>
-              <%= link_to users_path do %>
-                <li>Profile</li>
+              <%= link_to users_path, class: 'icon-only' do %>
+                <li><span style="font-size:24px;">🧙🏻</span></li>
               <% end %>
-              <%= link_to carts_path do %>
+              <%= link_to carts_path, class: 'icon-only' do %>
                 <li><span style="font-size:24px;">🛍️</span></li>
               <% end %>
-              <%= link_to logout_path, { method: :delete } do %>
+              <%= link_to logout_path, { method: :delete, class: 'icon-only active' } do %>
                 <li><span style="font-size:24px;">➡️</span></li>
+              <% end %>
+            <% else %>
+              <%= link_to login_path do %>
+                <li>Login</li>
               <% end %>
             <% end %>
           </ul>
@@ -88,7 +102,12 @@
           </div>
         <% elsif @users %>
           <div class="carts">
-            <%= render 'users/sidebar' %></div>
+            <%= render 'users/sidebar' %>
+          </div>
+        <% elsif @orders %>
+          <div class="carts">
+            <%= render 'orders/sidebar' %>
+          </div>
         <% end %>
       </nav>
       <div class="content">

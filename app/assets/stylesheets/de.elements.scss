@@ -11,6 +11,8 @@
   transition: all 0.1s linear;
   overflow: hidden;
 
+  @extend .rounded;
+
   // if the button has the attribute disabled
   &[disabled] {
     background: rgba(255, 255, 255, 0.28) !important;
@@ -34,7 +36,7 @@
   }
 
   &.rounded {
-    @extend .rd12;
+    @extend .rd10;
   }
 
   // ----------
@@ -60,7 +62,7 @@
     text-align: center;
 
     i {
-      line-height: 1.8em;
+      line-height: 2em;
     }
   }
 
@@ -105,8 +107,10 @@
   // sizes
   // ---------------
   &.big {
-    padding: 0 24px;
-    line-height: 3em;
+    padding: 0 1.4em;
+    line-height: 2.6em;
+    font-weight: 500;
+    letter-spacing: 0.1;
   }
 
   &.small {
@@ -153,9 +157,8 @@
 
   //
 
-  &.light {
-    background-color: var(--colour-light);
-    color: var(--colour-dark);
+  &.white {
+    background-color: white;
   }
 
   &.green {
@@ -202,22 +205,70 @@
 .notifier {
   bottom: -28em;
   right: 1em;
-  border-radius: 4px;
-  background: #161616f3;
+  background: var(--colour-dark);
   position: fixed;
   z-index: 100;
+  max-width: 380px;
   animation: notifierSlideIn 0.4s cubic-bezier(0.1, 0.82, 0.25, 1) forwards;
 
   .inr {
-    padding: 0 32px;
-    line-height: 4em;
+    padding: 1.2em 1.8em;
+    color: white;
 
-    p {
-      color: white;
+    .controller {
+      margin-bottom: 0.2em;
+      font-weight: 700;
+
+      p {
+        float: left;
+        line-height: 1.6em;
+        margin-right: 0.4em;
+      }
+
+      i {
+        &:before {
+          content: "store";
+          display: block;
+          float: left;
+        }
+
+        &.store {
+          &:before {
+            content: "store";
+          }
+        }
+
+        &.products {
+          &:before {
+            content: "qr_code";
+          }
+        }
+
+        &.users {
+          &:before {
+            content: "people_alt";
+          }
+        }
+
+        &.sessions {
+          &:before {
+            content: "sip";
+          }
+        }
+      }
+
+      &:after {
+        display: block;
+        content: "";
+        clear: both;
+        margin: 0;
+        padding: 0;
+        height: 0px;
+      }
     }
   }
 
-  @extend .mshd-2;
+  @extend .mshd-2, .rd10;
 }
 
 @keyframes notifierSlideIn {

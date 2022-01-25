@@ -32,6 +32,9 @@
 en:
   thanks: "Thank you for your order"
 
+  sessions:
+    logout: "Logged out"
+
   number:
     currency:
       format:

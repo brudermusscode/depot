@@ -26,8 +26,8 @@
   --colour-red: #ffaaab;
   --colour-darkred: #a53e54;
   --colour-pink: #e74de2;
-  --colour-dark: #1c313a;
-  --colour-light: #ffe9d8;
+  --colour-dark: #616160;
+  --colour-light: #fdf9f5;
   --colour-grey: #8a96a0;
   --colour-green: #419e15;
   --colour-bluegrey: #729baf;
@@ -56,6 +56,9 @@
   --colour-yellow-400: #fdd835;
   --colour-yellow-500: #fbc02d;
   --colour-yellow-600: #f9a825;
+
+  --colour-senf: #fbf3d0;
+  --colour-senf-dark: #f6cb92;
 
   --nav-width: 300px;
   --hdr-height: 5.2em;
@@ -90,11 +93,11 @@
 * {
   margin: 0;
   padding: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 
 html {
-  font-family: "Outfit", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 100%;
   background: #fff;
   overflow-y: auto;
@@ -242,23 +245,41 @@ header.main {
 
         a {
           display: block;
-          margin-right: 24px;
+          background: transparent;
+          padding: 0 1.2em;
+          margin-right: 0.2em;
+
+          @extend .rd10, .tran-all-cubic;
+
+          &.icon-only {
+            padding: 0 0.6em;
+            margin-left: 0.8em;
+          }
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.12);
+          }
+
+          &:active {
+            background: rgba(0, 0, 0, 0.24);
+            transform: scale(0.9);
+          }
 
           &:last-of-type {
             margin-right: 0px;
           }
 
+          &.active {
+            background: var(--colour-red);
+          }
+
           li {
-            line-height: 48px;
-            height: 48px;
+            line-height: 2.4em;
+            height: 2.4em;
             font-size: 1.2em;
             color: #333;
 
             @extend .tran-all, .disfl, .fldirrow, .flCenter;
-
-            &:active {
-              transform: scale(0.9);
-            }
           }
         }
       }

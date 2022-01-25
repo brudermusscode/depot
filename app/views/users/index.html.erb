@@ -1,14 +1,13 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Users</h1>
-
-<div id="users">
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New user", new_user_path %>
+  <div id="users" class="rd10 mb12" style="border:1px solid rgba(0,0,0,.12);padding:1.2em 2em;">
+    <div id="<%= dom_id user %>" class="lt">
+      <p>
+        <strong><%= user.name %></strong>
+      </p>
+    </div>
+    <div class="rt disfl fldirrow">
+      <%= link_to "Show", user, class: 'hellofresh small blue hover-shadow light' %>
+    </div>
+    <div class="cl"></div>
+  </div>
+<% end %>
