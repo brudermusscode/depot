@@ -1,32 +1,11 @@
-<%= form_with(model: review) do |form| %>
-  <% if review.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-      <ul>
-        <% review.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :product_id, style: "display: block" %>
-    <%= form.number_field :product_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="carts mt24">
+  <article style="padding:1em 1.2em">
+    <%= form_with(model: [@product, @product.reviews.build]) do |f| %>
+      <div class="mb12">
+        <%= f.label 'New comment', style: 'margin-top:0px;' %>
+        <%= f.text_area :body %>
+      </div>
+      <%= f.submit 'Submit', class: 'hellofresh blue big dark' %>
+    <% end %>
+  </article>
+</div>
