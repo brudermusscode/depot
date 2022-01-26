@@ -1,33 +1,47 @@
-<%= form_with(model: order, local: true, data: { turbo: false }) do |form| %>
-  <% if order.errors.any? %>
-    <div id="error-explainer">
-      <div class="title"><%= pluralize(order.errors.count, "oopsies") %> 🌺:</div>
-      <ul class="list">
-        <% order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="rd10" style="display:block;border:1px solid rgba(0,0,0,.12); padding:1.2em 1.8em;">
+  <%= form_with(model: order, local: true, data: { turbo: false }) do |form| %>
+    <% if order.errors.any? %>
+      <div id="error-explainer">
+        <div class="title"><%= pluralize(order.errors.count, "oopsies") %> 🌺:</div>
+        <ul class="list">
+          <% order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field" style='margin-top:0px'>
+      <%= form.label :name, t('.name'), style: 'margin-top:0px' %>
+      <div class="mb12"></div>
+      <%= form.text_field :name, size: 40 %>
     </div>
+    <div class="field">
+      <%= form.label :address, t('.address') %>
+      <div class="mb12"></div>
+      <%= form.text_field :address, size: 40 %>
+    </div>
+    <div class="disfl fldirrow" style="gap:1.2em;">
+      <div class="field w50">
+        <%= form.label :postcode, 'Postcode', style: 'margin-top:0px' %>
+        <div class="mb12"></div>
+        <%= form.text_field :postcode, size: 40 %>
+      </div>
+      <div class="field w50">
+        <%= form.label :city, 'City', style: 'margin-top:0px' %>
+        <div class="mb12"></div>
+        <%= form.text_field :city, size: 40 %>
+      </div>
+    </div>
+    <div class="field">
+      <%= form.label :email, t('.email') %>
+      <div class="mb12"></div>
+      <%= form.email_field :email, size: 40 %>
+    </div>
+    <div id='pay-type-component'></div>
+    <div class="actions mt24 rt">
+      <%= form.submit t('.submit'), class: 'hellofresh big green rd6 hover-shadow' %>
+    </div>
+    <div class="cl"></div>
   <% end %>
-  <div class="field">
-    <%= form.label :name, t('.name') %>
-    <div class="mb12"></div>
-    <%= form.text_field :name, size: 40 %>
-  </div>
-  <div class="field">
-    <%= form.label :address, t('.address') %>
-    <div class="mb12"></div>
-    <%= form.text_area :address, rows: 3, cols: 40 %>
-  </div>
-  <div class="field">
-    <%= form.label :email, t('.email') %>
-    <div class="mb12"></div>
-    <%= form.email_field :email, size: 40 %>
-  </div>
-  <div id='pay-type-component'></div>
-  <div class="actions mt24 rt">
-    <%= form.submit t('.submit'), class: 'hellofresh big green rd6 hover-shadow' %>
-  </div>
-  <div class="cl"></div>
-<% end %>
+</div>
 <%= javascript_pack_tag("pay_type") %>

@@ -6,4 +6,13 @@ class LineItem < ApplicationRecord
   def total_price
     product.price * quantity
   end
+
+  def info
+    merge Product.find_by id: :product_id
+    merge Order.find_by id: :order_id
+  end
+
+  def orderinfo
+    Order.find_by id: :order_id
+  end
 end

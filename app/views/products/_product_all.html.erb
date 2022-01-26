@@ -1,0 +1,49 @@
+<ul class="catalog">
+  <% cache @products do %>
+    <% @products.each do |product| %>
+      <% cache product do %>
+        <li style="padding:0 1.8em 1em;">
+          <div class="inr" style="width:auto;position:relative;">
+            <div class="title"><%= product.title %></div>
+            <div class="price mt12">
+              <div class="lt actual">
+                <%= number_to_currency(product.price) %>
+              </div>
+              <div class="rt">
+                <ul style="list-style:none;gap:.4em;" class="disfl fldirrow">
+                  <%=
+                    link_to "Show",
+                    product,
+                    {
+                      class: "hellofresh small blue rd4 hover-shadow"
+                    }
+                  %>
+                  <%=
+                    link_to 'Edit', edit_product_path(product),
+                    {
+                      class: "hellofresh rd4 small blue hover-shadow"
+                    }
+
+                    %>
+                  <%=
+                  button_to "Delete",
+                  product,
+                  {
+                    method: :delete,
+                    data: {
+                      confirm: 'Are you sure?'
+                    },
+                    class: "hellofresh rd4 small red hover-shadow"
+                  }
+                %>
+                </ul>
+              </div>
+              <div class="cl"></div>
+            </div>
+          </div>
+          <div class="cl"></div>
+        </li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

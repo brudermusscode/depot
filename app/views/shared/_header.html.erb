@@ -5,12 +5,6 @@
         <a href="/">
           <li>Store</li>
         </a>
-        <%= link_to products_path do %>
-          <li>Products</li>
-        <% end %>
-        <%= link_to admin_path do %>
-          <li>Admin</li>
-        <% end %>
       </ul>
     </div>
     <div class="rt-cont">
@@ -28,6 +22,12 @@
           </aside>
         </li>
         <% if session[:user_id] && User.find_by(id: session[:user_id]) %>
+          <%= link_to admin_path, class: 'icon-only' do %>
+            <li><span style="font-size:24px;">🪙</span></li>
+          <% end %>
+          <%= link_to products_path, class: 'icon-only' do %>
+            <li><span style="font-size:24px;">🔖</span></li>
+          <% end %>
           <%= link_to orders_path, class: 'icon-only' do %>
             <li><span style="font-size:24px;">📦</span></li>
           <% end %>

@@ -1,5 +1,8 @@
-<h1>Welcome</h1>
-<p>
-  It's <%= Time.now %>.
-  We have <%= pluralize(@total_orders, "order") %>.
-</p>
+<p class="fw7" style="font-size:3em;">Welcome</p>
+<p>It's <%= Time.now %>. We have <%= pluralize(@total_orders, "order") %>.</p>
+<div style="width:80%;border-top:1px solid rgba(0,0,0,.08);margin:24px auto;"></div>
+<% Order.all.each do |order| %>
+  <div id="orders" class="mb12 rd10" style="border:1px solid rgba(0,0,0,.12);padding:1.2em 2em;">
+    <%= render order %>
+  </div>
+<% end %>
