@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
+  has_many :products, through: :line_items
   validates :name, :address, :postcode, :city, :email, presence: true
   enum pay_type: {
     'Check' => 0,
@@ -45,13 +46,6 @@ class Order < ApplicationRecord
       OrderMailer.received(self).deliver_later
     else
       raise payment_result.error
-    end
-  end
-
-  # not working yet, dunno what I am doing lmao
-  def all_products
-    line_items.each do |li|
-      Product.all.find_by id: li.product_id
     end
   end
 end

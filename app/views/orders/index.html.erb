@@ -2,18 +2,15 @@
   <div id="orders" class="mb12 rd10" style="border:1px solid rgba(0,0,0,.12);padding:1.2em 2em;">
     <%= render order %>
     <div class="images mt12 disfl fldirrow flCenter">
-      <%
-        order.line_items.each do |li|
-          product = Product.find_by id: li.product_id
-      %>
-      <%= link_to product_path(product) do %>
-        <%= image_tag product.image_url, style: 'height:6em;border:1px solid rgba(0,0,0,.08);border-radius:10px;margin-right:8px;' %>
+      <% order.products.each do |product| %>
+        <%= link_to product_path(product) do %>
+          <%= image_tag product.image_url, style: 'height:6em;border:1px solid rgba(0,0,0,.08);border-radius:10px;margin-right:8px;' %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="mt12 rt">
+      <%= link_to "Show", order, class: 'hellofresh blue small dark hover-shadow' %>
+    </div>
+    <div class="cl"></div>
   </div>
-  <div class="mt12 rt">
-    <%= link_to "Show", order, class: 'hellofresh blue small dark hover-shadow' %>
-  </div>
-  <div class="cl"></div>
-</div>
 <% end %>
