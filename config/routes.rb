@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
 
-  resources :users
   resources :products do
     get :who_bought, on: :member
     resources :reviews
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :line_items
     resources :carts
+    resources :users
     root 'store#index', as: 'store_index', via: :all
   end
 

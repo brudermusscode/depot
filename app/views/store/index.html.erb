@@ -7,25 +7,23 @@
             <%= image_tag(product.image_url) %>
           </div>
           <div class="inr rt">
-            <div class="title"><%= product.title %></div>
+            <%= link_to product_path(id: product) do %>
+              <div class="title"><%= product.title %></div>
+            <% end %>
             <div class="desc"><%= sanitize(product.description) %></div>
             <div class="price mt24">
               <div class="lt actual">
                 <%= number_to_currency(product.price) %>
               </div>
-              <div class="rt">
+              <div class="rt" style="position:absolute;bottom:1.2em;right:1.2em;">
                 <%=
-
-                  button_to t('.add_html'),
+                  button_to '➕',
                   line_items_path(
                     product_id: product,
                     locale: I18n.locale
                   ),
-                  {
-                    class: 'hellofresh big rd10 light blue clean hover-shadow',
-                    remote: true
-                  }
-
+                  class: 'hellofresh red circled icon-only hover-shadow',
+                  remote: true
                 %>
               </div>
               <div class="cl"></div>
