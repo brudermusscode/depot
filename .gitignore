@@ -46,5 +46,7 @@ key.git
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+Gemfile.lock
+
 
 node_modules/
