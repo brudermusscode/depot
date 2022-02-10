@@ -21,5 +21,8 @@ module Depot
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # set assets path for using images outside of helper
+    config.assets.paths << Rails.root.join('app/assets/images', 'images')
   end
 end

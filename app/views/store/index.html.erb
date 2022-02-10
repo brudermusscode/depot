@@ -1,10 +1,28 @@
-<ul class="catalog">
+<style>
+  .product {
+    border:1px solid rgba(0,0,0,.12);
+    border-radius:10px;
+    margin-bottom:1em;
+    padding:1em;
+    position:relative;
+  }
+
+  .product .image {
+    float:left;
+    height:200px;
+    width:200px;
+  }
+
+  .product:last-of-type {
+    margin:0;
+  }
+</style>
+<div class="catalog">
   <% cache @products do %>
     <% @products.each do |product| %>
       <% cache product do %>
-        <li>
-          <div class="lt">
-          </div>
+        <div class="product">
+          <div class="image" style="background:url(<%= image_path product.image_url %>) center no-repeat;background-size:cover;"></div>
           <div class="inr rt">
             <%= link_to product_path(id: product) do %>
               <div class="title"><%= product.title %></div>
@@ -29,8 +47,8 @@
             </div>
           </div>
           <div class="cl"></div>
-        </li>
+        </div>
       <% end %>
     <% end %>
   <% end %>
-</ul>
+</div>

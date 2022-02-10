@@ -1,7 +1,7 @@
 <% unless !review.persisted? %>
   <article id="<%= dom_id review %>" style="padding:1.2em 1.6em;margin-top:12px;border-radius:10px;border:1px solid rgba(0,0,0,.12);">
     <div style="" class="mb8">
-      <p class="fw7 lt"><%= review.userinfo.name %></p>
+      <p class="fw7 lt"><%= get_user(review.user_id).name %></p>
       <p class="rt" style="font-size:.8em;color:var(--colour-light);line-height:1.6;background:var(--colour-dark);padding:0 10px;border-radius:10px;"><%= distance_of_time_in_words Time.now, review.created_at %> ago</p>
       <div class="cl"></div>
     </div>

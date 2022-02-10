@@ -42,13 +42,12 @@
       </div>
     <% end %>
     <%= render 'shared/header' %>
-    <flex-layout>
-      <%= render 'shared/sidebar_wrapper' %>
-      <div class="content">
-        <main class='<%= controller.controller_name %>'>
-          <%= yield %>
-        </main>
-      </div>
-    </flex-layout>
+    <%= render 'shared/sidebar_wrapper' %>
+    <div class="content">
+      <main class='<%= controller.controller_name %>'>
+        <%= yield %>
+      </main>
+    </div>
+    <div class="cl"></div>
   </body>
 </html>

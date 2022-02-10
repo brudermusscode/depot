@@ -62,7 +62,7 @@
 
   --nav-width: 300px;
   --hdr-height: 5.2em;
-  --app-width: 1490px;
+  --app-width: 1190px;
 }
 
 .material-icons {
@@ -99,18 +99,19 @@
 html {
   font-family: "Roboto", sans-serif;
   font-size: 100%;
-  background: #fff;
+  background: var(--colour-light);
   overflow-y: auto;
   color: #333;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  padding: 1em 4em;
   width: 100%;
   max-width: var(--app-width);
-  margin: 0 auto;
+  margin: 2em auto;
   position: relative;
+  background: white;
+  border-radius: 12px;
 }
 
 p {
@@ -329,26 +330,23 @@ header.main {
   }
 }
 
-flex-layout {
-  width: calc(100% - 48px);
-  box-sizing: border-box;
-  gap: 1.4em;
-  margin: 42px auto;
-
-  @extend .disfl, .fldirrow;
-}
-
 nav {
-  width: 24%;
+  width: 28%;
   background: transparent;
+  padding-top: 4em;
+
+  @extend .lt;
 }
 
 .content {
-  width: 72%;
+  width: calc(72% - 1em);
+  padding-top: 4em;
 
   &.full {
     width: 100%;
   }
+
+  @extend .rt;
 }
 
 .notice,
@@ -365,4 +363,10 @@ nav {
 
 main {
   width: 100%;
+  margin-bottom: 3em;
+}
+
+.image {
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
 }
