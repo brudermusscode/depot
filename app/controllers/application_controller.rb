@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :set_i18n_locale_from_params
+
+  # - check for user being authorized before accessing any action in
+  #   other controllers
+  # - using skip_before_action :authorize on needed controller actions
+  #   for skipping this step
   before_action :authorize
 
   protected
