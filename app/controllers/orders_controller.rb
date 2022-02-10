@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  skip_before_action :authorize, only: %i[new create]
   include CurrentCart
   before_action :set_cart, only: %i[new create]
   before_action :ensure_cart_isnt_empty, only: :new
@@ -25,6 +24,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+    @order.user_id = current_user.id if user_signed_in?
+
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])

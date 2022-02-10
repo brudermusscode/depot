@@ -9,4 +9,8 @@ module ApplicationHelper
   def render_if_exists(path_to_partial)
     render path_to_partial if lookup_context.find_all(path_to_partial, [], true).any?
   end
+
+  def get_user(user)
+    User.find user
+  end
 end

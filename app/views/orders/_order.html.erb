@@ -1,5 +1,8 @@
 <div id="<%= dom_id order %>">
-  <p><strong><%= order.name %></strong></p>
+  <% if order.user_id %>
+    <p style=""><strong><%= get_user(order.user_id).name %></strong></p>
+  <% end %>
+  <p><%= order.name %></p>
   <div class="mt12 mb12">
     <p><strong>Address</strong></p>
     <p><%= order.address %></p>

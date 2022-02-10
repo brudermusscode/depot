@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <%= javascript_importmap_tags %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript">
       I18n.defaultLocale = "<%= I18n.default_locale %>";
@@ -28,6 +27,17 @@
             <p><%= controller_name.capitalize %></p>
           </div>
           <div class="message"><%= notice %></div>
+        </div>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div id="notifier" class="notifier">
+        <div class="inr">
+          <div class="controller">
+            <p><i class="<%= controller_name %> material-icons md-24"></i></p>
+            <p><%= controller_name.capitalize %></p>
+          </div>
+          <div class="message"><%= flash[:alert] %></div>
         </div>
       </div>
     <% end %>

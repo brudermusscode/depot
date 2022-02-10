@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  belongs_to :user, class_name: 'user', foreign_key: 'user_id', optional: true
   has_many :line_items, dependent: :destroy
   has_many :products, through: :line_items
   validates :name, :address, :postcode, :city, :email, presence: true

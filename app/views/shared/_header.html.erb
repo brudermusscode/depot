@@ -21,28 +21,35 @@
             <% end %>
           </aside>
         </li>
-        <% if session[:user_id] && User.find_by(id: session[:user_id]) %>
+        <% if user_signed_in? %>
           <%= link_to admin_path, class: 'icon-only' do %>
             <li><span style="font-size:24px;">🪙</span></li>
           <% end %>
-          <%= link_to products_path, class: 'icon-only' do %>
-            <li><span style="font-size:24px;">🔖</span></li>
-          <% end %>
-          <%= link_to orders_path, class: 'icon-only' do %>
-            <li><span style="font-size:24px;">📦</span></li>
-          <% end %>
-          <%= link_to users_path, class: 'icon-only' do %>
-            <li><span style="font-size:24px;">🧙🏻</span></li>
-          <% end %>
-          <%= link_to carts_path, class: 'icon-only' do %>
-            <li><span style="font-size:24px;">🛍️</span></li>
-          <% end %>
-          <%= link_to logout_path, { method: :delete, class: 'icon-only active' } do %>
-            <li><span style="font-size:24px;">➡️</span></li>
-          <% end %>
+          <a class="user_icon">
+            <li>
+              <p><%= current_user.name[0].chr.upcase %></p>
+            </li>
+            <div class="user_menu">
+              <div class="p">
+                <%= link_to edit_user_registration_path do %>
+                  <p>Settings</p>
+                <% end %>
+                <%= link_to orders_path do %>
+                  <p>Orders</p>
+                <% end %>
+                <p class="mb8">Products</p>
+                <%= button_to destroy_user_session_path, method: :delete, class: 'hellofresh small red', style: 'width:100%;border-radius:0;line-height:2em;' do %>
+                  Logout
+                <% end %>
+              </div>
+            </div>
+          </a>
         <% else %>
-          <%= link_to login_path do %>
+          <%= link_to new_user_session_path do %>
             <li>Login</li>
+          <% end %>
+          <%= link_to new_user_registration_path do %>
+            <li>Sign up</li>
           <% end %>
         <% end %>
       </ul>

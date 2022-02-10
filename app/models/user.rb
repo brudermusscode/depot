@@ -1,15 +1,11 @@
 class User < ApplicationRecord
-  has_many :reviews
-  validates :name, presence: true, uniqueness: true
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
-  after_destroy :ensure_an_admin_remains
-  class Error < StandardError
-  end
+  has_many :orders
 
-  private
-
-  def ensure_an_admin_remains
-    raise Error, "Can't delete last user" if User.count.zero?
-  end
+  validates_uniqueness_of :email
+  validates_uniqueness_of :name
 end

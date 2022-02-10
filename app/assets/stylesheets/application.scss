@@ -113,12 +113,6 @@ body {
   position: relative;
 }
 
-h1,
-h2,
-h3 {
-  display: none;
-}
-
 p {
   margin: 0;
 }
@@ -128,7 +122,9 @@ a {
   color: var(--colour-red);
 }
 
-input,
+input[type="text"],
+input[type="password"],
+input[type="email"],
 select.norm,
 textarea {
   border: 1px solid rgba(0, 0, 0, 0.12);
@@ -178,13 +174,13 @@ label {
   }
 }
 
-#error-explainer {
+#error-explainer,
+#error_explanation {
   background-color: #ff3d71;
   color: white;
   border: none;
-  margin-bottom: 0.5em;
   padding: 18px 32px;
-  margin: 0 0 24px;
+  margin: 24px 0 24px;
 
   @extend .rd6;
 
@@ -215,6 +211,33 @@ header.main {
   max-width: var(--app-width);
   z-index: 100;
 
+  .user_menu {
+    box-sizing: border-box;
+    position: absolute;
+    top: 5em;
+    right: 1.4em;
+    background: white;
+    width: 14em;
+    padding: 0.8em 0 0;
+
+    .p {
+      p {
+        text-align: left;
+        color: var(--colour-dark);
+        font-weight: 400;
+        transition: 0.1s all linear;
+        line-height: 2em;
+        padding: 0 1.4em;
+
+        &:hover {
+          background: var(--colour-senf);
+        }
+      }
+    }
+
+    @extend .mshd-1;
+  }
+
   .inr {
     margin: 0 auto;
     padding-top: 1.4em;
@@ -244,29 +267,21 @@ header.main {
         @extend .disfl, .fldirrow;
 
         a {
-          display: block;
-          background: transparent;
-          padding: 0 1.2em;
-          margin-right: 0.2em;
+          &.user_icon {
+            li {
+              padding: 0;
+              width: 2.4em;
+              background: var(--colour-senf-dark);
+              cursor: pointer;
+              margin-left: 1.2em;
+              p {
+                color: var(--colour-senf);
+                font-size: 0.8em;
+                font-weight: 700;
 
-          @extend .rd10, .tran-all-cubic;
-
-          &.icon-only {
-            padding: 0 0.6em;
-            margin-left: 0.8em;
-          }
-
-          &:hover {
-            background: rgba(0, 0, 0, 0.12);
-          }
-
-          &:active {
-            background: rgba(0, 0, 0, 0.24);
-            transform: scale(0.9);
-          }
-
-          &:last-of-type {
-            margin-right: 0px;
+                @extend .tac;
+              }
+            }
           }
 
           li {
@@ -274,6 +289,29 @@ header.main {
             height: 2.4em;
             font-size: 1.2em;
             color: #333;
+            display: block;
+            background: transparent;
+            padding: 0 1.2em;
+            margin-right: 0.2em;
+
+            @extend .rd10, .tran-all-cubic;
+
+            &.icon-only {
+              padding: 0 0.6em;
+              margin-left: 0.8em;
+            }
+
+            &:hover {
+              background: rgba(0, 0, 0, 0.12);
+            }
+
+            &:active {
+              background: rgba(0, 0, 0, 0.24);
+            }
+
+            &:last-of-type {
+              margin-right: 0px;
+            }
 
             @extend .tran-all, .disfl, .fldirrow, .flCenter;
           }
