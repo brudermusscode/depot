@@ -37,7 +37,9 @@
                 <%= link_to orders_path do %>
                   <p>Orders</p>
                 <% end %>
-                <p class="mb8">Products</p>
+                <%= link_to products_path do %>
+                  <p class="mb8">Products</p>
+                <% end %>
                 <%= button_to destroy_user_session_path, method: :delete, class: 'hellofresh small red', style: 'width:100%;border-radius:0;line-height:2em;' do %>
                   Logout
                 <% end %>

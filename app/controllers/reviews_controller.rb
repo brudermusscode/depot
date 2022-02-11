@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @review = @product.reviews.new(review_params)
-    @review[:user_id] = session[:user_id]
+    @review[:user_id] = current_user.id
 
     respond_to do |format|
       if @review.save
