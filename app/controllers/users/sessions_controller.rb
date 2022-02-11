@@ -11,10 +11,10 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     # find user
-    user = User.find_by email: params[:email]
+    user = User.find_by email: params[:user][:email]
 
     # check if user exists and if it's disabled
-    if !user&.disabled?
+    if user&.deleted == 1
       redirect_to new_user_session_path, notice: 'This account is disabled'
     else
       self.resource = warden.authenticate!(auth_options)

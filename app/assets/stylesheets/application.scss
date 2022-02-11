@@ -212,31 +212,63 @@ header.main {
   max-width: var(--app-width);
   z-index: 100;
 
-  .user_menu {
-    box-sizing: border-box;
-    position: absolute;
-    top: 5em;
-    right: 1.4em;
-    background: white;
-    width: 14em;
-    padding: 0.8em 0 0;
+  .user_icon {
+    padding: 0;
+    width: 3em;
+    line-height: 3em;
+    background: var(--colour-senf-dark);
+    cursor: pointer;
+    margin-left: 1.2em;
+    border-radius: 50%;
 
-    .p {
-      p {
-        text-align: left;
-        color: var(--colour-dark);
-        font-weight: 400;
-        transition: 0.1s all linear;
-        line-height: 2em;
-        padding: 0 1.4em;
+    p {
+      color: var(--colour-senf);
+      font-size: 1.2em;
+      font-weight: 700;
 
-        &:hover {
-          background: var(--colour-senf);
-        }
+      @extend .tac;
+    }
+
+    &:hover {
+      .user_menu {
+        height: auto;
+        opacity: 1;
+        visibility: visible;
       }
     }
 
-    @extend .mshd-1;
+    .user_menu {
+      box-sizing: border-box;
+      position: absolute;
+      top: 4.4em;
+      right: 1.4em;
+      background: white;
+      border-radius: 6px;
+      width: 14em;
+      padding: 0.8em 0 0;
+      overflow: hidden;
+      height: 0px;
+      opacity: 0;
+      visibility: hidden;
+
+      .p {
+        p {
+          text-align: left;
+          color: var(--colour-dark);
+          font-weight: 400;
+          transition: 0.1s all linear;
+          line-height: 2em;
+          padding: 0 1.4em;
+          font-size: 1em;
+
+          &:hover {
+            background: var(--colour-senf);
+          }
+        }
+      }
+
+      @extend .mshd-1;
+    }
   }
 
   .inr {
@@ -268,23 +300,6 @@ header.main {
         @extend .disfl, .fldirrow;
 
         a {
-          &.user_icon {
-            li {
-              padding: 0;
-              width: 2.4em;
-              background: var(--colour-senf-dark);
-              cursor: pointer;
-              margin-left: 1.2em;
-              p {
-                color: var(--colour-senf);
-                font-size: 0.8em;
-                font-weight: 700;
-
-                @extend .tac;
-              }
-            }
-          }
-
           li {
             line-height: 2.4em;
             height: 2.4em;

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[create destroy new show]
   include CurrentCart
   before_action :set_cart, only: %i[new create]
   before_action :ensure_cart_isnt_empty, only: :new
@@ -97,4 +98,6 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:name, :address, :postcode, :city, :email, :pay_type)
   end
+
+  # TODO: add functionality to redirect user to error page when visiting order id that doesn't belong to them
 end

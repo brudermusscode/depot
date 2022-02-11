@@ -25,10 +25,10 @@
           <%= link_to admin_path, class: 'icon-only' do %>
             <li><span style="font-size:24px;">🪙</span></li>
           <% end %>
-          <a class="user_icon">
-            <li>
+          <div class="user_icon">
+            <div>
               <p><%= current_user.name[0].chr.upcase %></p>
-            </li>
+            </div>
             <div class="user_menu">
               <div class="p">
                 <%= link_to edit_user_registration_path do %>
@@ -43,7 +43,7 @@
                 <% end %>
               </div>
             </div>
-          </a>
+          </div>
         <% else %>
           <%= link_to new_user_session_path do %>
             <li>Login</li>

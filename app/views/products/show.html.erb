@@ -2,5 +2,12 @@
 <%= render @product %>
 <!-- review/comment section -->
 <div style="width:80%;margin:24px auto;border-top:1px solid rgba(0,0,0,.12);"></div>
+<% if @product.reviews.count.zero? %>
+  <div>
+    <p class="tac">No reviews for this product</p>
+  </div>
+<% end %>
 <%= render @product.reviews %>
-<%= render 'reviews/form', product: @product %>
+<% if user_signed_in? %>
+  <%= render 'reviews/form', product: @product %>
+<% end %>

@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :set_i18n_locale_from_params
 
+  # user needs to be authenticated for taking any action by default
+  # skip_before_action for skipping
+  before_action :authenticate_user!
+
   # filter unwanted parameters from list when devise_controller is active
   before_action :configure_permitted_parameters, if: :devise_controller?
 
