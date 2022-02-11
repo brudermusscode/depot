@@ -3,9 +3,4 @@
 Ramastin:
   id: 1
   name: Ramastin
-  password_digest: <%= BCrypt::Password.create("secret") %>
-
-brudermusscode:
-  id: 2
-  name: brudermusscode
-  password_digest: <%= BCrypt::Password.create("secret") %>
+  encrypted_password: password

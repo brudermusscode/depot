@@ -19,10 +19,10 @@ class User < ApplicationRecord
   end
 
   def disable
-    self.deleted = 1
+    self.disabled_at = Time.now
   end
 
   def disabled?
-    true if deleted == 1
+    self.disabled_at?
   end
 end
