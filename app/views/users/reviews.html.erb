@@ -1,0 +1,11 @@
+<h1>All reviews (<%= @total_reviews %>)</h1>
+<% @user.reviews.reverse_order.each do |review| %>
+  <% product = Product.find review.product_id %>
+  <div class="borderBox padded rd6 mb12">
+    <h3 class="mb6">
+      <%= link_to product.title, product_url(review.product_id) %>
+      <span class="timeAgo"><%= distance_of_time_in_words Time.now, review.created_at %> ago</span>
+    </h3>
+    <%= review.body %>
+  </div>
+<% end %>

@@ -22,8 +22,8 @@
           </aside>
         </li>
         <% if user_signed_in? %>
-          <%= link_to admin_path, class: 'icon-only' do %>
-            <li><span style="font-size:24px;">🪙</span></li>
+          <%= link_to admin_path, class: 'mr12' do %>
+            <li class="icon-only"><span style="font-size:24px;">🪙</span></li>
           <% end %>
           <div class="user_icon">
             <div>
@@ -34,11 +34,11 @@
                 <%= link_to edit_user_registration_path do %>
                   <p>Settings</p>
                 <% end %>
-                <%= link_to orders_path do %>
+                <%= link_to users_orders_path(current_user.id) do %>
                   <p>Orders</p>
                 <% end %>
-                <%= link_to products_path do %>
-                  <p class="mb8">Products</p>
+                <%= link_to users_reviews_path(current_user.id) do %>
+                  <p class="mb8">Reviews</p>
                 <% end %>
                 <%= button_to destroy_user_session_path, method: :delete, class: 'hellofresh small red', style: 'width:100%;border-radius:0;line-height:2em;' do %>
                   Logout

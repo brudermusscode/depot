@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :orders
+  has_many :reviews
 
   # validate the uniqueness of mail and name to prevent duplication
   validates_uniqueness_of :email

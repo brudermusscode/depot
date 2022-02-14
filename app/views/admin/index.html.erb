@@ -1,17 +1,9 @@
 <p class="fw7" style="font-size:3em;">Welcome <%= current_user.name %>!</p>
 <div style="width:80%;border-top:1px solid rgba(0,0,0,.08);margin:24px auto;"></div>
-<div style="font-size:1.2em;font-weight:700;margin-bottom:.8em;">Orders (<%= @total_orders %>)</div>
-<% Order.all.each do |order| %>
-  <div id="orders" class="mb12 rd10" style="border:1px solid rgba(0,0,0,.12);padding:1.2em 2em;">
-    <%= render order %>
-  </div>
-<% end %>
+<h3 class="mb24">Newest order</h3>
+<%= render @orders.first %>
 <div style="width:80%;border-top:1px solid rgba(0,0,0,.08);margin:24px auto;"></div>
 <div style="font-size:1.2em;font-weight:700;margin-bottom:.8em;margin-top:2em;">
-  <p>Users (<%= @total_users %>)</p>
+  <p>Newest user</p>
 </div>
-<% @users.each do |user| %>
-  <div id="orders" class="mb12 rd10" style="border:1px solid rgba(0,0,0,.12);padding:1.2em 2em;">
-    <%= user.email %>
-  </div>
-<% end %>
+<%= render @users.first %>

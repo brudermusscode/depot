@@ -1,9 +1,5 @@
 class Review < ApplicationRecord
   belongs_to :product
-  belongs_to :user, optional: true
+  belongs_to :user
   validates :body, presence: true
-
-  def userinfo
-    User.find_by id: user_id
-  end
 end

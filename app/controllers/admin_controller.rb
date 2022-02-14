@@ -1,7 +1,6 @@
 class AdminController < ApplicationController
   def index
-    @total_orders = Order.count
-    @users = User.all
-    @total_users = User.count
+    @orders = Order.all.reverse_order
+    @users = User.all.reverse_order
   end
 end

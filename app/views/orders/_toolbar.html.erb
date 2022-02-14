@@ -1,0 +1,17 @@
+<div class="lt mb24">
+  <%= link_to orders_url, { class: 'hellofresh clean icon-only clean circled hover-shadow rd6 ml4',
+  style: '' } do %>
+    <span class="material-icons md24" style="line-height:2em;">arrow_back</span>
+  <% end %>
+</div>
+<% if user_signed_in? %>
+  <div class="rt disfl mb24" style="flex-direction:row-reverse;gap:.4em;">
+    <% if params[:action] != 'new' %>
+      <%= button_to "Cancel", @order, { method: :delete, class: 'hellofresh red big hover-shadow rd6' } %>
+      <% if params[:id] && params[:action] != 'edit' %>
+        <%= link_to "Edit", edit_order_path(order), class: 'hellofresh white big hover-shadow rd6 light', style: 'display:block;' %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+<div class="cl"></div>

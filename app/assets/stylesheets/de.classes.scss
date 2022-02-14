@@ -92,6 +92,14 @@
     0 12px 15px 0 rgba(0, 0, 0, 0.24);
 }
 
+.timeAgo {
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.24);
+  font-weight: 300;
+  display: block;
+  float: right;
+}
+
 .nose {
   -webkit-user-drag: none;
   -webkit-touch-callout: none;

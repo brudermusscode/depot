@@ -1,5 +1,5 @@
 module StoreHelper
   def page_title
-    @page_title || 'Pragmatic Store'
+    @page_title || 'cOoL sToRe'
   end
 end

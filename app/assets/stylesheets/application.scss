@@ -215,10 +215,10 @@ header.main {
   .user_icon {
     padding: 0;
     width: 3em;
-    line-height: 3em;
+    line-height: 2.8em;
+    height: 3em;
     background: var(--colour-senf-dark);
     cursor: pointer;
-    margin-left: 1.2em;
     border-radius: 50%;
 
     p {
@@ -250,6 +250,10 @@ header.main {
       height: 0px;
       opacity: 0;
       visibility: hidden;
+
+      a {
+        margin: 0;
+      }
 
       .p {
         p {
@@ -300,6 +304,12 @@ header.main {
         @extend .disfl, .fldirrow;
 
         a {
+          display: block;
+
+          &.mr12 {
+            margin-right: 0.8em;
+          }
+
           li {
             line-height: 2.4em;
             height: 2.4em;
@@ -308,13 +318,18 @@ header.main {
             display: block;
             background: transparent;
             padding: 0 1.2em;
-            margin-right: 0.2em;
 
             @extend .rd10, .tran-all-cubic;
 
             &.icon-only {
-              padding: 0 0.6em;
-              margin-left: 0.8em;
+              padding: 0;
+              line-height: 2.4em;
+              height: 2.4em;
+              width: 2.4em;
+              border-radius: 50%;
+              border: 1px solid rgba(0, 0, 0, 0.08);
+
+              @extend .tac;
             }
 
             &:hover {
