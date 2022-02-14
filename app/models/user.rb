@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   rolify
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,6 +24,6 @@ class User < ApplicationRecord
   end
 
   def disabled?
-    self.disabled_at?
+    disabled_at?
   end
 end
