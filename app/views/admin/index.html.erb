@@ -1,9 +1,9 @@
 <p class="fw7" style="font-size:3em;">Welcome <%= current_user.name %>!</p>
 <div style="width:80%;border-top:1px solid rgba(0,0,0,.08);margin:24px auto;"></div>
 <h3 class="mb24">Newest order</h3>
-<%= render @orders.first %>
+<%= render @orders.last %>
 <div style="width:80%;border-top:1px solid rgba(0,0,0,.08);margin:24px auto;"></div>
 <div style="font-size:1.2em;font-weight:700;margin-bottom:.8em;margin-top:2em;">
   <p>Newest user</p>
 </div>
-<%= render @users.first %>
+<%= render @users.last %>

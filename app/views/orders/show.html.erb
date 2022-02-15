@@ -1,10 +1,8 @@
 <%= render 'toolbar', order: @order %>
-<div class="" style="border:1px solid rgba(0,0,0,.12);border-radius:14px;padding:1.4em;">
-  <%= render @order %>
-</div>
-<div class="disfl fldirrow flCenter" style="margin-top:1.2em;">
+<%= render 'order_min', order: @order %>
+<div class="disfl fldirrow flCenter" style="margin-top:1.2em;gap:.8em;">
   <% @order.products.each do |product| %>
-    <%= link_to product_path(product), style: 'display:block;flex-basis:25%;gap:.4em;' do %>
+    <%= link_to product_path(product), style: 'display:block;flex-basis:33%;' do %>
       <%= image_tag product.image_url, style: 'width:100%;border:1px solid rgba(0,0,0,.08);border-radius:10px;margin-right:8px;' %>
     <% end %>
   <% end %>
