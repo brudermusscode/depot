@@ -22,8 +22,10 @@
           </aside>
         </li>
         <% if user_signed_in? %>
-          <%= link_to admin_path, class: 'mr12' do %>
-            <li class="icon-only"><span style="font-size:24px;">🪙</span></li>
+          <% if current_user.has_role? :admin %>
+            <%= link_to admin_path, class: 'mr12' do %>
+              <li class="icon-only"><span style="font-size:24px;">🪙</span></li>
+            <% end %>
           <% end %>
           <div class="user_icon">
             <div>
